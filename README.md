@@ -20,7 +20,7 @@
 
 ## 💼 Skills
 - **Technical**: `.NET`, JavaScript (React, Node.js), Low-level programming (Operating Systems in C, Assembly)
-- **Technical Expertise**: Debugging, System Architecture, Code Refactoring, Legacy Software
+- **Technical Expertise**: Debugging, System Architecture, Legacy Software
 
 ## 🌐 Languages
 - 🇺🇸 English (Fluent)
