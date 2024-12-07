@@ -15,7 +15,7 @@
 ## 👨‍💻 About Me
 - 📍 Based in Beer Sheva, Israel
 - 📑 Born in the US (Connecticut ct), moved to Israel serving in the `IAF`
-- 💻 Proficient in `C++`, `js` and `C#/vb`
+- 💻 Proficient in `C/C++`, `js` and `C# & vb`
 - 🎯 Seeking software engineering opportunities 
 
 ## 💼 Skills
