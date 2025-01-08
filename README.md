@@ -15,14 +15,11 @@
 ## 👨‍💻 About Me
 - 📍 Based in Beer Sheva, Israel
 - 📑 Born in the US (Connecticut ct), moved to Israel serving in the `IAF`
-- 💻 Proficient in `C/C++`, `js` and `C# & vb`
-- 🎯 Seeking software engineering opportunities 
 
 ## 💼 Skills
-- **Technical**: `.NET`, JavaScript (React, Node.js), Low-level programming (Operating Systems in C, Assembly)
-- **Technical Expertise**: Debugging, System Architecture, Legacy Software
+- **Technical**: `.NET Framework `(C#, vb), JavaScript (React, Node.js) and C/Cpp
 
 ## 🌐 Languages
 - 🇺🇸 English (Fluent)
 - 🇮🇱 Hebrew (Fluent)
-- ru Russian (Basic)
+- 🇷🇺 Russian (Basic)
