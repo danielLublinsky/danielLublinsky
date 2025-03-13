@@ -14,9 +14,11 @@
 
 ## 👨‍💻 About Me
 - 📍 Based in Beer Sheva, Israel
-- 📑 Born in the US (Connecticut ct), moved to Israel serving in the `IAF`
+- 📑 Born in the US (Connecticut ct)
+- 🫡 Served at the `IAF - Israel Air Force`.
+- 🧠 Working as a software developer with 3+ years of experience.
 
-## 💼 Technical Skills
+## 💼 Basic Technical Skills
 - **.NET**: `.NET Framework`(C#, vb, .ASP.NET)
 - **Web**: JavaScript (react/React-native, Node, Bun)...
 - **Low-level**: C/Cpp,x86
