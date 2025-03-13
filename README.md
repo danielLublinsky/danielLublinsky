@@ -16,8 +16,12 @@
 - 📍 Based in Beer Sheva, Israel
 - 📑 Born in the US (Connecticut ct), moved to Israel serving in the `IAF`
 
-## 💼 Skills
-- **Technical**: `.NET Framework `(C#, vb), JavaScript (React, Node.js) and C/Cpp
+## 💼 Technical Skills
+- **.NET**: `.NET Framework`(C#, vb, .ASP.NET)
+- **Web**: JavaScript (react/React-native, Node, Bun)...
+- **Low-level**: C/Cpp,x86
+
+
 
 ## 🌐 Languages
 - 🇺🇸 English (Fluent)
