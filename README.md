@@ -30,5 +30,3 @@
 - 🇷🇺 Russian (Basic)
 
 
-
-[![GitHub Streak](https://streak-stats.demolab.com?user=danielLublinsky&theme=radical&hide_border=true&mode=weekly)](https://git.io/streak-stats)
