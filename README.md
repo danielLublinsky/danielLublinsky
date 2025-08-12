@@ -18,10 +18,11 @@
 - 🫡 Served at the `IAF - Israel Air Force`.
 - 🧠 Working as a software developer with 3+ years of experience.
 
-## 💼 Basic Technical Skills
-- **.NET**: `.NET Framework`(C#, vb, .ASP.NET)
-- **Web**: JavaScript (react/React-native, Node, Bun)...
-- **Low-level**: C/Cpp,x86
+## 💼 Stuff I did and do
+- **I Do:** C#, vb, .ASP.NET - (job..)
+- **I Did:** React/React-native, Node, JS/TS, Angular - (web dev job)
+- **I Did:** C & Cpp,x86 (made a shitty OS and a few other projects)
+
 
 
 
