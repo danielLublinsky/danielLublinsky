@@ -3,8 +3,7 @@
 <p align="center">
 
   <br>
-  Explore my portfolio and latest projects!
-  
+  I used a computer few times and have typed words before.
 </p>
 
 
@@ -24,9 +23,5 @@
 - **Web**: JavaScript (react/React-native, Node, Bun)...
 - **Low-level**: C/Cpp,x86
 
-## 🌐 Languages
-- 🇺🇸 English (Fluent)
-- 🇮🇱 Hebrew (Fluent)
-- 🇷🇺 Russian (Basic)
 
 
