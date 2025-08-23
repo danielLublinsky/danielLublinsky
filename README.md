@@ -19,9 +19,9 @@
 - 🧠 Working as a software developer with 3+ years of experience.
 
 ## 💼 Stuff I did and do
-- **I Do:** C#, vb, .ASP.NET - (job..)
-- **I Did:** React/React-native, Node, JS/TS, Angular - (web dev job)
-- **I Did:** C & Cpp,x86 (made a shitty OS and a few other projects)
+-  C#, vb, .ASP.NET
+-  React/React-native, Node, JS/TS, Angular 
+-  C & Cpp,x86
 
 
 
