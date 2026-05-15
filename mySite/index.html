@@ -280,15 +280,34 @@
 
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
+      #dunes, #spotlight { display: none; }
       .layout { flex-direction: column; height: auto; }
-      .left { width:100%; min-width:0; height:auto; position:static; box-shadow:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
-      .nav-links { flex-direction:row; flex-wrap:wrap; gap:.4rem 1rem; margin-top:1.2rem; }
-      .right { padding:2rem 1.5rem 10.5rem; background-size:20px 20px; }
-      .skills-grid, .gh-stats-row { grid-template-columns:1fr 1fr; }
-      #cursor-ring,#cursor-dot { display:none !important; }
+      .left {
+        width: 100%; min-width: 0; height: auto; position: static;
+        box-shadow: none; border-bottom: 1px solid var(--border);
+        padding: 1.5rem 1.2rem;
+      }
+      .left-top h1 { font-size: 1.9rem; }
+      .bio { font-size: .82rem; }
+      .left-bottom {
+        display: flex; flex-wrap: wrap; gap: .2rem 1.1rem;
+        padding-top: .8rem; margin-top: .5rem;
+      }
+      .contact-item { margin-bottom: 0; }
+      .nav-links { display: none; }
+      .right { padding: 1.5rem 1.2rem 2.5rem; background-size: 20px 20px; }
+      .section { margin-bottom: 3rem; }
+      .skills-grid { grid-template-columns: 1fr 1fr; }
+      .gh-stats-row { grid-template-columns: 1fr 1fr; }
+      #cursor-ring, #cursor-dot { display: none !important; }
     }
     @media (max-width: 480px) {
-      .skills-grid, .gh-stats-row { grid-template-columns:1fr; }
+      .left-top h1 { font-size: 1.6rem; }
+      .left { padding: 1.2rem 1rem; }
+      .right { padding: 1.2rem 1rem 2rem; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .gh-stats-row { grid-template-columns: 1fr 1fr; }
+      .project-card { padding: 1.1rem 1.2rem; }
     }
   </style>
 </head>
@@ -716,6 +735,7 @@
       <div class="contact-item">0532409905</div>
       <div class="contact-item"><a href="mailto:daniellublinsky39@gmail.com">daniellublinsky39@gmail.com</a></div>
       <div class="contact-item"><a href="https://github.com/danielLublinsky" target="_blank" rel="noopener">github.com/danielLublinsky</a></div>
+      <div class="contact-item"><a href="https://www.instagram.com/daniellub_/" target="_blank" rel="noopener">instagram.com/daniellub_</a></div>
     </div>
   </aside>
 
@@ -858,7 +878,7 @@
     <div class="section" id="background">
       <div class="section-label animate">Background</div>
       <div class="bg-card animate">
-        <p class="bg-text">Software engineer based in Beersheva — the gateway to the Negev desert. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build, solder, and tune drones.</p>
+        <p class="bg-text">Hello,<br>I am Software engineer living in Beersheva. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build solder and tune drones.</p>
       </div>
     </div>
 
