@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Daniel Lublinsky</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --blue:    #2a5cff;
+      --indigo:  #6366f1;
+      --green:   #10b981;
+      --amber:   #f59e0b;
+      --text:    #1a1a1a;
+      --muted:   #666;
+      --border:  #e0e0e0;
+    }
+
+    html, body { height: 100%; font-family: 'Segoe UI', system-ui, sans-serif; color: var(--text); }
+
+    /* ── CUSTOM CURSOR ── */
+    @media (pointer: fine) { * { cursor: none !important; } }
+    #cursor-ring {
+      position: fixed; width: 34px; height: 34px;
+      border: 1.5px solid rgba(42,92,255,.45); border-radius: 50%;
+      pointer-events: none; z-index: 9999; transform: translate(-50%,-50%);
+      transition: width .2s, height .2s, border-color .2s, background .2s; display: none;
+    }
+    #cursor-dot {
+      position: fixed; width: 5px; height: 5px; background: var(--blue);
+      border-radius: 50%; pointer-events: none; z-index: 9999;
+      transform: translate(-50%,-50%); display: none;
+    }
+    body.cursor-ready #cursor-ring, body.cursor-ready #cursor-dot { display: block; }
+    body.cursor-hover #cursor-ring { width: 48px; height: 48px; border-color: rgba(42,92,255,.2); background: rgba(42,92,255,.06); }
+
+    /* ── SPOTLIGHT ── */
+    #spotlight {
+      position: fixed; width: 520px; height: 520px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(42,92,255,.065) 0%, transparent 65%);
+      pointer-events: none; z-index: 0; transform: translate(-50%,-50%); left: -999px; top: -999px;
+    }
+
+    /* ── SAND DUNES ── */
+    #dunes {
+      position: fixed; bottom: 0; left: 0; right: 0; height: 130px;
+      pointer-events: none; z-index: 50; overflow: hidden;
+    }
+    #dunes .dune-layer { position: absolute; bottom: 0; width: 200%; height: 100%; }
+    .dune-back  { animation: duneShift 32s ease-in-out infinite alternate; }
+    .dune-mid   { animation: duneShift 22s ease-in-out infinite alternate-reverse; }
+    .dune-front { animation: duneShift 15s ease-in-out infinite alternate; }
+    @keyframes duneShift { from { transform: translateX(0); } to { transform: translateX(-8%); } }
+
+    /* ── AIRCRAFT ── */
+    .aircraft { position: absolute; pointer-events: auto; }
+    @keyframes droneFall {
+      0%   { transform: translateY(0)    rotate(0deg);   opacity: 1; }
+      100% { transform: translateY(320px) rotate(60deg); opacity: 0; }
+    }
+    .aircraft.shot { animation: droneFall .7s ease-in forwards !important; }
+    .fpva     { width: 48px; height:48px; bottom:52px; animation: flyAcross 9s  linear infinite; animation-delay:-3s; }
+    .fpvb     { width: 36px; height:36px; bottom:44px; animation: flyAcross 6s  linear infinite; animation-delay:-1s; }
+    .fpvc     { width: 42px; height:42px; bottom:60px; animation: flyAcross 13s linear infinite; animation-delay:-7s; }
+    .fpvd     { width: 30px; height:30px; bottom:50px; animation: flyAcross 8s  linear infinite; animation-delay:-4s; }
+    .fpve     { width: 54px; height:54px; bottom:46px; animation: flyAcross 10s linear infinite; animation-delay:-9s; }
+    .fpvf     { width: 38px; height:38px; bottom:56px; animation: flyAcross 7s  linear infinite; animation-delay:-2s; }
+    .fpvg     { width: 44px; height:44px; bottom:48px; animation: flyAcross 12s linear infinite; animation-delay:-6s; }
+    .fpvh     { width: 32px; height:32px; bottom:62px; animation: flyAcross 5s  linear infinite; animation-delay:-8s; }
+    .hex1     { width: 52px; height:52px; bottom:54px; animation: flyAcross 11s linear infinite; animation-delay:-2s; }
+    .hex2     { width: 40px; height:40px; bottom:46px; animation: flyAcross 8s  linear infinite; animation-delay:-5s; }
+    .hex3     { width: 60px; height:60px; bottom:58px; animation: flyAcross 14s linear infinite; animation-delay:-9s; }
+    .oct1     { width: 56px; height:56px; bottom:50px; animation: flyAcross 10s linear infinite; animation-delay:-3s; }
+    .oct2     { width: 44px; height:44px; bottom:62px; animation: flyAcross 7s  linear infinite; animation-delay:-7s; }
+    .oct3     { width: 66px; height:66px; bottom:48px; animation: flyAcross 13s linear infinite; animation-delay:-11s; }
+    @keyframes flyAcross {
+      from { transform: translateX(-150px); }
+      to   { transform: translateX(110vw); }
+    }
+
+    /* ── LAYOUT ── */
+    .layout { display: flex; height: 100vh; }
+
+    /* ── LEFT PANEL ── */
+    .left {
+      width: 300px; min-width: 300px; height: 100vh; position: sticky; top: 0;
+      background: linear-gradient(175deg, #edf1ff 0%, #f5f0e8 100%);
+      box-shadow: 4px 0 28px rgba(42,92,255,.08);
+      padding: 3rem 2.2rem; display: flex; flex-direction: column;
+      justify-content: space-between; z-index: 2;
+    }
+    .left-top { will-change: transform; }
+
+    .avail-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.68rem; font-weight: 600; color: #059669;
+      background: #d1fae5; border: 1px solid #a7f3d0;
+      border-radius: 999px; padding: 0.22rem 0.7rem; margin-bottom: 1rem;
+    }
+    .avail-dot {
+      width: 6px; height: 6px; border-radius: 50%; background: #059669;
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+
+    .left-top h1 {
+      font-size: 2.4rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
+      margin-bottom: .45rem;
+      background: linear-gradient(135deg,#1540d6 0%,#5b82ff 100%);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    }
+    .cv-download {
+      display: block; text-align: center; margin: 0 0 1.4rem;
+      padding: .4rem 0; border: 1.5px solid var(--blue); border-radius: 5px;
+      font-size: .75rem; font-weight: 700; color: var(--blue);
+      text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
+      transition: background .2s, color .2s;
+    }
+    .cv-download:hover { background: var(--blue); color: #fff; }
+    .role {
+      font-size: .68rem; font-weight: 700; letter-spacing: .2em;
+      color: var(--blue); text-transform: uppercase; margin-bottom: 1.4rem;
+      display: flex; align-items: center; gap: .4rem;
+    }
+    .role::after { content:'|'; animation: blink 1.1s step-end infinite; color: var(--blue); font-weight:300; }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0} }
+
+    .bio { font-size: .84rem; color: var(--muted); line-height: 1.75; }
+
+    .nav-links { list-style: none; margin-top: 2rem; display: flex; flex-direction: column; gap: .1rem; }
+    .nav-links a {
+      display: block; font-size: .8rem; font-weight: 500; color: var(--muted);
+      text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
+      padding: .4rem .7rem; border-radius: 5px; margin-left: -.7rem;
+      transition: color .2s, background .2s;
+    }
+    .nav-links a:hover { color: var(--blue); background: rgba(42,92,255,.07); }
+    .nav-links a.active { color: var(--blue); background: rgba(42,92,255,.13); font-weight: 600; }
+
+    .left-bottom { border-top: 1px solid rgba(42,92,255,.15); padding-top: 1.3rem; }
+    .contact-item { font-size: .76rem; color: var(--muted); margin-bottom: .38rem; }
+    .contact-item a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .contact-item a:hover { color: var(--blue); }
+
+    /* ── RIGHT PANEL ── */
+    .right {
+      flex: 1; overflow-y: auto; padding: 3.5rem 3.5rem 10.5rem;
+      position: relative; z-index: 1; background-color: #fff;
+      background-image: radial-gradient(circle, #dde5f7 1px, transparent 1px);
+      background-size: 26px 26px;
+    }
+
+    /* ── SECTIONS ── */
+    .section { margin-bottom: 4.5rem; }
+    .section-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .2em; color: var(--blue);
+      text-transform: uppercase; margin-bottom: 1.5rem; padding-bottom: .55rem;
+      border-bottom: 1px solid var(--border);
+      display: flex; align-items: center; gap: .55rem;
+    }
+    .section-label::before {
+      content: ''; display: inline-block; width: 7px; height: 7px;
+      background: var(--blue); border-radius: 2px; flex-shrink: 0;
+    }
+
+    /* ── SKILLS ── */
+    .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 2.5rem; }
+    .skill-group-name { font-size: .8rem; font-weight: 700; color: var(--text); margin-bottom: .55rem; }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
+    .pill {
+      font-size: .73rem; padding: .22rem .65rem; border-radius: 999px;
+      border: 1px solid; transition: filter .15s;
+    }
+    .pill:hover { filter: brightness(0.93); }
+    /* per-category colors */
+    .pill-blue   { background: #eef2ff; border-color: rgba(42,92,255,.25); color: #2a4dcc; }
+    .pill-indigo { background: #ede9fe; border-color: rgba(99,102,241,.3);  color: #4f46e5; }
+    .pill-green  { background: #d1fae5; border-color: rgba(16,185,129,.3);  color: #047857; }
+    .pill-amber  { background: #fef3c7; border-color: rgba(245,158,11,.35); color: #b45309; }
+
+    /* ── EXPERIENCE ── */
+    .exp-item {
+      margin-bottom: 2rem; padding-bottom: 2rem; padding-left: 1.1rem;
+      border-bottom: 1px solid var(--border); border-left: 2px solid rgba(42,92,255,.2);
+      transition: border-left-color .2s;
+    }
+    .exp-item:hover { border-left-color: var(--blue); }
+    .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .exp-header { display: flex; align-items: center; gap: .85rem; margin-bottom: .4rem; }
+    .exp-logo {
+      width: 38px; height: 38px; border: 1px solid var(--border); border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      overflow: hidden; flex-shrink: 0; background: #fff;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .exp-logo img { width: 30px; height: 30px; object-fit: contain; }
+    .exp-logo svg { width: 20px; height: 20px; }
+    .exp-company { font-size: .92rem; font-weight: 700; color: var(--text); }
+    .exp-meta { font-size: .76rem; color: var(--muted); margin-bottom: .65rem; }
+    .exp-bullets { list-style: none; }
+    .exp-bullets li {
+      font-size: .81rem; color: #444; padding-left: .85rem;
+      position: relative; margin-bottom: .3rem; line-height: 1.55;
+    }
+    .exp-bullets li::before { content:'·'; position:absolute; left:0; color:var(--blue); font-size:1.1rem; line-height:1.2; }
+
+    /* ── GITHUB STATS ── */
+    .gh-stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: .8rem; margin-bottom: 1.5rem; }
+    .gh-stat-card {
+      background: #fff; border: 1px solid var(--border); border-radius: 10px;
+      padding: .9rem 1rem; text-align: center;
+      box-shadow: 0 1px 6px rgba(0,0,0,.04);
+    }
+    .gh-stat-num { font-size: 1.5rem; font-weight: 800; line-height: 1; }
+    .gh-stat-label { font-size: .65rem; color: var(--muted); margin-top: .3rem; text-transform: uppercase; letter-spacing: .06em; }
+
+    .gh-sub-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .12em; color: var(--muted);
+      text-transform: uppercase; margin: 1.4rem 0 .7rem;
+    }
+
+    .lang-bar { display: flex; height: 8px; border-radius: 999px; overflow: hidden; margin-bottom: .7rem; }
+    .lang-seg { height: 100%; }
+
+    .lang-legend { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin-bottom: 1.4rem; }
+    .lang-item { display: flex; align-items: center; gap: .35rem; font-size: .75rem; color: var(--muted); }
+    .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+
+    .gh-loading { font-size: .8rem; color: var(--muted); font-style: italic; }
+
+    /* ── HEATMAP ── */
+    .heatmap-wrap { overflow-x: auto; padding-bottom: .3rem; }
+    .heatmap-months { display: flex; padding-left: 1px; margin-bottom: 4px; }
+    .heatmap-months span { font-size: .62rem; color: var(--muted); flex: 1; min-width: 0; }
+    .heatmap { display: flex; gap: 3px; }
+    .heatmap-week { display: flex; flex-direction: column; gap: 3px; }
+    .heatmap-day {
+      width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0;
+      transition: transform .1s;
+    }
+    .heatmap-day:hover { transform: scale(1.4); }
+    .heatmap-legend { display: flex; align-items: center; gap: 3px; margin-top: .6rem; justify-content: flex-end; }
+    .heatmap-legend span { font-size: .68rem; color: var(--muted); }
+    .private-badge {
+      font-size: .65rem; background: #d1fae5; color: #047857;
+      border: 1px solid #a7f3d0; border-radius: 3px;
+      padding: .1rem .45rem; margin-left: .5rem; vertical-align: middle;
+    }
+
+    /* ── PROJECT CARD ── */
+    .project-card {
+      border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.6rem;
+      background: #fff; transition: box-shadow .2s, border-color .2s, transform .2s;
+    }
+    .project-card:hover { box-shadow: 0 6px 28px rgba(42,92,255,.1); border-color: rgba(42,92,255,.35); transform: translateY(-2px); }
+    .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; }
+    .project-name { font-size: .9rem; font-weight: 700; color: var(--text); }
+    .project-arrow { font-size: 1rem; color: var(--blue); opacity: .4; transition: opacity .2s; }
+    .project-card:hover .project-arrow { opacity: 1; }
+    .project-desc { font-size: .81rem; color: var(--muted); line-height: 1.65; margin-bottom: .9rem; }
+    .project-link { font-size: .76rem; color: var(--blue); text-decoration: none; }
+    .project-link:hover { text-decoration: underline; }
+    .project-chips { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .9rem; }
+    .chip { font-size: .7rem; padding: .18rem .55rem; background: #f4f6fb; border: 1px solid #d8dff0; border-radius: 4px; color: #555; }
+
+    /* ── BACKGROUND ── */
+    .bg-card { border-left: 3px solid var(--amber); padding: 1rem 1.3rem; background: #fffbf0; border-radius: 0 8px 8px 0; }
+    .bg-text { font-size: .84rem; color: var(--muted); line-height: 1.8; }
+
+    /* ── SCROLL ANIMATIONS ── */
+    .animate { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
+    .animate.visible { opacity: 1; transform: none; }
+    .animate-children > * { opacity: 0; transform: translateY(16px); transition: opacity .4s ease, transform .4s ease; }
+    .animate-children.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
+    .animate-children.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.08s; }
+    .animate-children.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.16s; }
+    .animate-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.24s; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 720px) {
+      .layout { flex-direction: column; height: auto; }
+      .left { width:100%; min-width:0; height:auto; position:static; box-shadow:none; border-bottom:1px solid var(--border); padding:2rem 1.5rem; }
+      .nav-links { flex-direction:row; flex-wrap:wrap; gap:.4rem 1rem; margin-top:1.2rem; }
+      .right { padding:2rem 1.5rem 10.5rem; background-size:20px 20px; }
+      .skills-grid, .gh-stats-row { grid-template-columns:1fr 1fr; }
+      #cursor-ring,#cursor-dot { display:none !important; }
+    }
+    @media (max-width: 480px) {
+      .skills-grid, .gh-stats-row { grid-template-columns:1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div id="cursor-ring"></div>
+<div id="cursor-dot"></div>
+<div id="spotlight"></div>
+
+<!-- SAND DUNES -->
+<div id="dunes" aria-hidden="true">
+  <!-- back layer -->
+  <svg class="dune-layer dune-back" viewBox="0 0 2880 100" preserveAspectRatio="none" fill="none">
+    <path d="M0,68 C120,42 240,72 380,55 C520,38 640,68 780,50 C920,32 1040,65 1180,48 C1320,31 1440,62 1580,46 C1720,30 1840,60 1980,44 C2120,28 2240,58 2400,44 C2540,30 2680,55 2880,45 L2880,100 L0,100 Z"
+          fill="#b07840"/>
+  </svg>
+  <!-- mid layer -->
+  <svg class="dune-layer dune-mid" viewBox="0 0 2880 100" preserveAspectRatio="none" fill="none">
+    <path d="M0,78 C100,60 220,82 360,68 C500,54 620,78 760,64 C900,50 1020,76 1160,62 C1300,48 1420,74 1560,60 C1700,46 1820,72 1960,58 C2100,44 2240,70 2400,57 C2560,44 2700,66 2880,56 L2880,100 L0,100 Z"
+          fill="#c99040"/>
+  </svg>
+
+  <!-- FPV DRONE A -->
+  <svg class="aircraft fpva" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <!-- arms -->
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <!-- prop wash circles -->
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <!-- motor hubs -->
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <!-- body -->
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <!-- camera -->
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#1d4ed8"/>
+    <circle cx="25" cy="16" r="1"   fill="#93c5fd"/>
+    <!-- LEDs: red back-left, back-right / green front -->
+    <circle cx="10" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="40" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="10" cy="10" r="1.8" fill="#22c55e"/>
+    <circle cx="40" cy="10" r="1.8" fill="#22c55e"/>
+  </svg>
+
+  <!-- FPV DRONE B (smaller) -->
+  <svg class="aircraft fpvb" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#7c3aed"/>
+    <circle cx="25" cy="16" r="1"   fill="#c4b5fd"/>
+    <circle cx="10" cy="40" r="1.8" fill="#f97316"/>
+    <circle cx="40" cy="40" r="1.8" fill="#f97316"/>
+    <circle cx="10" cy="10" r="1.8" fill="#22c55e"/>
+    <circle cx="40" cy="10" r="1.8" fill="#22c55e"/>
+  </svg>
+
+  <!-- FPV DRONE C (medium, high) -->
+  <svg class="aircraft fpvc" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#ef4444"/>
+    <circle cx="25" cy="16" r="1"   fill="#fca5a5"/>
+    <circle cx="10" cy="40" r="1.8" fill="#22c55e"/>
+    <circle cx="40" cy="40" r="1.8" fill="#22c55e"/>
+    <circle cx="10" cy="10" r="1.8" fill="#f97316"/>
+    <circle cx="40" cy="10" r="1.8" fill="#f97316"/>
+  </svg>
+
+  <!-- FPV DRONE D (tiny) -->
+  <svg class="aircraft fpvd" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#8b5cf6"/>
+    <circle cx="25" cy="16" r="1"   fill="#ddd6fe"/>
+    <circle cx="10" cy="40" r="1.8" fill="#f97316"/>
+    <circle cx="40" cy="40" r="1.8" fill="#22c55e"/>
+    <circle cx="10" cy="10" r="1.8" fill="#22c55e"/>
+    <circle cx="40" cy="10" r="1.8" fill="#f97316"/>
+  </svg>
+
+  <!-- FPV DRONE E (large) -->
+  <svg class="aircraft fpve" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#06b6d4"/>
+    <circle cx="25" cy="16" r="1"   fill="#a5f3fc"/>
+    <circle cx="10" cy="40" r="1.8" fill="#22c55e"/>
+    <circle cx="40" cy="40" r="1.8" fill="#f97316"/>
+    <circle cx="10" cy="10" r="1.8" fill="#f97316"/>
+    <circle cx="40" cy="10" r="1.8" fill="#22c55e"/>
+  </svg>
+
+  <!-- FPV DRONE F (cyan/white LEDs) -->
+  <svg class="aircraft fpvf" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#0ea5e9"/>
+    <circle cx="25" cy="16" r="1"   fill="#e0f2fe"/>
+    <circle cx="10" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="40" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="10" cy="10" r="1.8" fill="#ffffff"/>
+    <circle cx="40" cy="10" r="1.8" fill="#ffffff"/>
+  </svg>
+
+  <!-- FPV DRONE G (amber/yellow LEDs) -->
+  <svg class="aircraft fpvg" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#d97706"/>
+    <circle cx="25" cy="16" r="1"   fill="#fef3c7"/>
+    <circle cx="10" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="40" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="10" cy="10" r="1.8" fill="#fbbf24"/>
+    <circle cx="40" cy="10" r="1.8" fill="#fbbf24"/>
+  </svg>
+
+  <!-- FPV DRONE H (pink/magenta LEDs) -->
+  <svg class="aircraft fpvh" viewBox="0 0 50 50" xmlns="http://www.w3.org/2000/svg">
+    <line x1="11" y1="11" x2="39" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <line x1="39" y1="11" x2="11" y2="39" stroke="#1e293b" stroke-width="4" stroke-linecap="round"/>
+    <circle cx="10" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="10" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="40" cy="40" r="8" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="10" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="10" r="3.5" fill="#334155"/>
+    <circle cx="10" cy="40" r="3.5" fill="#334155"/>
+    <circle cx="40" cy="40" r="3.5" fill="#334155"/>
+    <rect x="19" y="19" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="21" y="13" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="25" cy="16" r="2.2" fill="#db2777"/>
+    <circle cx="25" cy="16" r="1"   fill="#fce7f3"/>
+    <circle cx="10" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="40" cy="40" r="1.8" fill="#ef4444"/>
+    <circle cx="10" cy="10" r="1.8" fill="#f0abfc"/>
+    <circle cx="40" cy="10" r="1.8" fill="#f0abfc"/>
+  </svg>
+
+  <!-- HEXACOPTER 1 (6-prop, blue camera, green front, orange side) -->
+  <svg class="aircraft hex1" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="8" y1="30" x2="52" y2="30" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="19" y1="11" x2="41" y2="49" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="41" y1="11" x2="19" y2="49" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="52" cy="30" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="41" cy="49" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="19" cy="49" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="8"  cy="30" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="19" cy="11" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="41" cy="11" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="52" cy="30" r="3.5" fill="#334155"/>
+    <circle cx="41" cy="49" r="3.5" fill="#334155"/>
+    <circle cx="19" cy="49" r="3.5" fill="#334155"/>
+    <circle cx="8"  cy="30" r="3.5" fill="#334155"/>
+    <circle cx="19" cy="11" r="3.5" fill="#334155"/>
+    <circle cx="41" cy="11" r="3.5" fill="#334155"/>
+    <rect x="24" y="24" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="26" y="18" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="30" cy="21" r="2.2" fill="#1d4ed8"/>
+    <circle cx="30" cy="21" r="1"   fill="#93c5fd"/>
+    <circle cx="19" cy="49" r="1.8" fill="#ef4444"/>
+    <circle cx="41" cy="49" r="1.8" fill="#ef4444"/>
+    <circle cx="19" cy="11" r="1.8" fill="#22c55e"/>
+    <circle cx="41" cy="11" r="1.8" fill="#22c55e"/>
+    <circle cx="52" cy="30" r="1.8" fill="#f97316"/>
+    <circle cx="8"  cy="30" r="1.8" fill="#f97316"/>
+  </svg>
+
+  <!-- HEXACOPTER 2 (6-prop, purple camera, white front, red side) -->
+  <svg class="aircraft hex2" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="8" y1="30" x2="52" y2="30" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="19" y1="11" x2="41" y2="49" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="41" y1="11" x2="19" y2="49" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="52" cy="30" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="41" cy="49" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="19" cy="49" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="8"  cy="30" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="19" cy="11" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="41" cy="11" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="52" cy="30" r="3.5" fill="#334155"/>
+    <circle cx="41" cy="49" r="3.5" fill="#334155"/>
+    <circle cx="19" cy="49" r="3.5" fill="#334155"/>
+    <circle cx="8"  cy="30" r="3.5" fill="#334155"/>
+    <circle cx="19" cy="11" r="3.5" fill="#334155"/>
+    <circle cx="41" cy="11" r="3.5" fill="#334155"/>
+    <rect x="24" y="24" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="26" y="18" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="30" cy="21" r="2.2" fill="#7c3aed"/>
+    <circle cx="30" cy="21" r="1"   fill="#ddd6fe"/>
+    <circle cx="19" cy="49" r="1.8" fill="#ef4444"/>
+    <circle cx="41" cy="49" r="1.8" fill="#ef4444"/>
+    <circle cx="19" cy="11" r="1.8" fill="#ffffff"/>
+    <circle cx="41" cy="11" r="1.8" fill="#ffffff"/>
+    <circle cx="52" cy="30" r="1.8" fill="#ef4444"/>
+    <circle cx="8"  cy="30" r="1.8" fill="#ef4444"/>
+  </svg>
+
+  <!-- HEXACOPTER 3 (6-prop, cyan camera, yellow front, green side) -->
+  <svg class="aircraft hex3" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="8" y1="30" x2="52" y2="30" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="19" y1="11" x2="41" y2="49" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <line x1="41" y1="11" x2="19" y2="49" stroke="#1e293b" stroke-width="3.5" stroke-linecap="round"/>
+    <circle cx="52" cy="30" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="41" cy="49" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="19" cy="49" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="8"  cy="30" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="19" cy="11" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="41" cy="11" r="7" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="52" cy="30" r="3.5" fill="#334155"/>
+    <circle cx="41" cy="49" r="3.5" fill="#334155"/>
+    <circle cx="19" cy="49" r="3.5" fill="#334155"/>
+    <circle cx="8"  cy="30" r="3.5" fill="#334155"/>
+    <circle cx="19" cy="11" r="3.5" fill="#334155"/>
+    <circle cx="41" cy="11" r="3.5" fill="#334155"/>
+    <rect x="24" y="24" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="26" y="18" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="30" cy="21" r="2.2" fill="#06b6d4"/>
+    <circle cx="30" cy="21" r="1"   fill="#a5f3fc"/>
+    <circle cx="19" cy="49" r="1.8" fill="#ef4444"/>
+    <circle cx="41" cy="49" r="1.8" fill="#ef4444"/>
+    <circle cx="19" cy="11" r="1.8" fill="#fbbf24"/>
+    <circle cx="41" cy="11" r="1.8" fill="#fbbf24"/>
+    <circle cx="52" cy="30" r="1.8" fill="#22c55e"/>
+    <circle cx="8"  cy="30" r="1.8" fill="#22c55e"/>
+  </svg>
+
+  <!-- OCTOCOPTER 1 (8-prop, red camera, cyan LEDs) -->
+  <svg class="aircraft oct1" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="8"  y1="30" x2="52" y2="30" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="8"  x2="30" y2="52" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="14" y1="14" x2="46" y2="46" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="46" y1="14" x2="14" y2="46" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="52" cy="30" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="46" cy="46" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="30" cy="52" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="14" cy="46" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="8"  cy="30" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="14" cy="14" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="30" cy="8"  r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="46" cy="14" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="52" cy="30" r="3" fill="#334155"/>
+    <circle cx="46" cy="46" r="3" fill="#334155"/>
+    <circle cx="30" cy="52" r="3" fill="#334155"/>
+    <circle cx="14" cy="46" r="3" fill="#334155"/>
+    <circle cx="8"  cy="30" r="3" fill="#334155"/>
+    <circle cx="14" cy="14" r="3" fill="#334155"/>
+    <circle cx="30" cy="8"  r="3" fill="#334155"/>
+    <circle cx="46" cy="14" r="3" fill="#334155"/>
+    <rect x="24" y="24" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="26" y="18" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="30" cy="21" r="2.2" fill="#ef4444"/>
+    <circle cx="30" cy="21" r="1"   fill="#fca5a5"/>
+    <circle cx="30" cy="52" r="1.8" fill="#ef4444"/>
+    <circle cx="14" cy="46" r="1.8" fill="#ef4444"/>
+    <circle cx="46" cy="46" r="1.8" fill="#ef4444"/>
+    <circle cx="30" cy="8"  r="1.8" fill="#06b6d4"/>
+    <circle cx="14" cy="14" r="1.8" fill="#06b6d4"/>
+    <circle cx="46" cy="14" r="1.8" fill="#06b6d4"/>
+    <circle cx="52" cy="30" r="1.8" fill="#22c55e"/>
+    <circle cx="8"  cy="30" r="1.8" fill="#22c55e"/>
+  </svg>
+
+  <!-- OCTOCOPTER 2 (8-prop, green camera, purple/white LEDs) -->
+  <svg class="aircraft oct2" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="8"  y1="30" x2="52" y2="30" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="8"  x2="30" y2="52" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="14" y1="14" x2="46" y2="46" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="46" y1="14" x2="14" y2="46" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="52" cy="30" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="46" cy="46" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="30" cy="52" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="14" cy="46" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="8"  cy="30" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="14" cy="14" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="30" cy="8"  r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="46" cy="14" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="52" cy="30" r="3" fill="#334155"/>
+    <circle cx="46" cy="46" r="3" fill="#334155"/>
+    <circle cx="30" cy="52" r="3" fill="#334155"/>
+    <circle cx="14" cy="46" r="3" fill="#334155"/>
+    <circle cx="8"  cy="30" r="3" fill="#334155"/>
+    <circle cx="14" cy="14" r="3" fill="#334155"/>
+    <circle cx="30" cy="8"  r="3" fill="#334155"/>
+    <circle cx="46" cy="14" r="3" fill="#334155"/>
+    <rect x="24" y="24" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="26" y="18" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="30" cy="21" r="2.2" fill="#16a34a"/>
+    <circle cx="30" cy="21" r="1"   fill="#bbf7d0"/>
+    <circle cx="30" cy="52" r="1.8" fill="#ef4444"/>
+    <circle cx="14" cy="46" r="1.8" fill="#ef4444"/>
+    <circle cx="46" cy="46" r="1.8" fill="#ef4444"/>
+    <circle cx="30" cy="8"  r="1.8" fill="#a855f7"/>
+    <circle cx="14" cy="14" r="1.8" fill="#a855f7"/>
+    <circle cx="46" cy="14" r="1.8" fill="#a855f7"/>
+    <circle cx="52" cy="30" r="1.8" fill="#ffffff"/>
+    <circle cx="8"  cy="30" r="1.8" fill="#ffffff"/>
+  </svg>
+
+  <!-- OCTOCOPTER 3 (8-prop, amber camera, blue/orange LEDs) -->
+  <svg class="aircraft oct3" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+    <line x1="8"  y1="30" x2="52" y2="30" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="30" y1="8"  x2="30" y2="52" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="14" y1="14" x2="46" y2="46" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <line x1="46" y1="14" x2="14" y2="46" stroke="#1e293b" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="52" cy="30" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="46" cy="46" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="30" cy="52" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="14" cy="46" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="8"  cy="30" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="14" cy="14" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="30" cy="8"  r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="46" cy="14" r="6" fill="rgba(148,163,184,.25)" stroke="rgba(148,163,184,.4)" stroke-width="1" stroke-dasharray="3,2"/>
+    <circle cx="52" cy="30" r="3" fill="#334155"/>
+    <circle cx="46" cy="46" r="3" fill="#334155"/>
+    <circle cx="30" cy="52" r="3" fill="#334155"/>
+    <circle cx="14" cy="46" r="3" fill="#334155"/>
+    <circle cx="8"  cy="30" r="3" fill="#334155"/>
+    <circle cx="14" cy="14" r="3" fill="#334155"/>
+    <circle cx="30" cy="8"  r="3" fill="#334155"/>
+    <circle cx="46" cy="14" r="3" fill="#334155"/>
+    <rect x="24" y="24" width="12" height="12" rx="2" fill="#0f172a"/>
+    <rect x="26" y="18" width="8" height="6" rx="1.5" fill="#0f172a"/>
+    <circle cx="30" cy="21" r="2.2" fill="#d97706"/>
+    <circle cx="30" cy="21" r="1"   fill="#fef3c7"/>
+    <circle cx="30" cy="52" r="1.8" fill="#ef4444"/>
+    <circle cx="14" cy="46" r="1.8" fill="#ef4444"/>
+    <circle cx="46" cy="46" r="1.8" fill="#ef4444"/>
+    <circle cx="30" cy="8"  r="1.8" fill="#3b82f6"/>
+    <circle cx="14" cy="14" r="1.8" fill="#3b82f6"/>
+    <circle cx="46" cy="14" r="1.8" fill="#3b82f6"/>
+    <circle cx="52" cy="30" r="1.8" fill="#f97316"/>
+    <circle cx="8"  cy="30" r="1.8" fill="#f97316"/>
+  </svg>
+
+  <!-- front layer -->
+  <svg class="dune-layer dune-front" viewBox="0 0 2880 100" preserveAspectRatio="none" fill="none">
+    <path d="M0,88 C80,76 180,90 320,82 C460,74 560,90 700,82 C840,74 940,88 1080,80 C1220,72 1340,86 1480,78 C1620,70 1740,85 1880,77 C2020,69 2160,84 2300,76 C2440,68 2600,82 2880,74 L2880,100 L0,100 Z"
+          fill="#e0ae56"/>
+  </svg>
+</div>
+
+<div class="layout">
+
+  <!-- LEFT PANEL -->
+  <aside class="left">
+    <div class="left-top">
+      <h1>Daniel<br>Lublinsky</h1>
+      <p class="role">Software Engineer</p>
+      <a class="cv-download" href="MYCV_2026.pdf" download>Download CV</a>
+      <ul class="nav-links">
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#experience">Experience</a></li>
+        <li><a href="#github">GitHub</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#background">Background</a></li>
+      </ul>
+    </div>
+    <div class="left-bottom">
+      <div class="contact-item">Beersheva, Israel</div>
+      <div class="contact-item">0532409905</div>
+      <div class="contact-item"><a href="mailto:daniellublinsky39@gmail.com">daniellublinsky39@gmail.com</a></div>
+      <div class="contact-item"><a href="https://github.com/danielLublinsky" target="_blank" rel="noopener">github.com/danielLublinsky</a></div>
+    </div>
+  </aside>
+
+  <!-- RIGHT PANEL -->
+  <main class="right" id="scroll-container">
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+      <div class="section-label animate">Skills</div>
+      <div class="skills-grid animate-children">
+
+        <div class="skill-group">
+          <div class="skill-group-name">General</div>
+          <div class="skill-tags">
+            <span class="pill pill-blue">.NET / C#</span>
+            <span class="pill pill-blue">VB.NET</span>
+            <span class="pill pill-blue">SQL Server</span>
+            <span class="pill pill-blue">Python</span>
+            <span class="pill pill-blue">Node.js</span>
+            <span class="pill pill-blue">React</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">Cloud &amp; Infra</div>
+          <div class="skill-tags">
+            <span class="pill pill-indigo">Google Cloud</span>
+            <span class="pill pill-indigo">BigQuery</span>
+            <span class="pill pill-indigo">Vertex AI</span>
+            <span class="pill pill-indigo">S3</span>
+            <span class="pill pill-indigo">Docker</span>
+            <span class="pill pill-indigo">OpenShift</span>
+            <span class="pill pill-indigo">NGINX</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">AI &amp; Data</div>
+          <div class="skill-tags">
+            <span class="pill pill-green">RAG Pipelines</span>
+            <span class="pill pill-green">Fine-tuning</span>
+            <span class="pill pill-green">Context Caching</span>
+            <span class="pill pill-green">Embeddings</span>
+            <span class="pill pill-green">MCP</span>
+          </div>
+        </div>
+
+        <div class="skill-group">
+          <div class="skill-group-name">OS &amp; Low Level</div>
+          <div class="skill-tags">
+            <span class="pill pill-amber">Rust</span>
+            <span class="pill pill-amber">C / C++</span>
+            <span class="pill pill-amber">x86 ASM</span>
+            <span class="pill pill-amber">UNIX Internals</span>
+            <span class="pill pill-amber">Bootloaders</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EXPERIENCE -->
+    <div class="section" id="experience">
+      <div class="section-label animate">Experience</div>
+      <div class="animate-children">
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-logo"><img src="https://www.contiki.co.il/img/logo-transparent.png" alt="Contiki"></div>
+            <div class="exp-company">Contiki I.T</div>
+          </div>
+          <div class="exp-meta">Lead .NET &amp; AI Engineer &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Sep 2022 – present (~4 yrs)</div>
+          <ul class="exp-bullets">
+            <li>Built SQL Server data ingestion pipelines using ODBC/OLE DB for large-scale financial data.</li>
+            <li>Refactored and maintained legacy software — I/O optimisation, .NET migrations, external API integrations.</li>
+            <li>Designed AI services on legacy infrastructure: LLM context caching, multimodal pipelines, and fine-tuning.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-logo"><img src="iaf-logo.png" alt="IAF"></div>
+            <div class="exp-company">IAF Flight Test Center</div>
+          </div>
+          <div class="exp-meta">Lead Full Stack Developer &nbsp;·&nbsp; Military service &nbsp;·&nbsp; Dec 2023 – Aug 2026</div>
+          <ul class="exp-bullets">
+            <li>Built ASP &amp; FastAPI backends to analyse and model avionics blocks.</li>
+            <li>Developed ML change-point detection system using HMM and ruptures.</li>
+            <li>Architected data-heavy React frontends with WASM and Jupyter; configured NGINX and Git pipelines.</li>
+          </ul>
+        </div>
+
+        <div class="exp-item">
+          <div class="exp-header">
+            <div class="exp-logo">
+              <svg viewBox="0 0 24 24" fill="none">
+                <path d="M8 9l-3 3 3 3M16 9l3 3-3 3M13 7l-2 10" stroke="#2a5cff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="exp-company">Freelance Full Stack</div>
+          </div>
+          <div class="exp-meta">Independent Developer &nbsp;·&nbsp; Jan 2021 – Aug 2022</div>
+          <ul class="exp-bullets">
+            <li>Developed full-stack applications for multiple clients — blogs, websites, and apps.</li>
+            <li>Built iOS applications in Swift, integrating native Android features and APIs.</li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- GITHUB STATS -->
+    <div class="section" id="github">
+      <div class="section-label animate">GitHub</div>
+      <div id="gh-content" class="animate">
+        <p class="gh-loading">Loading stats…</p>
+      </div>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+      <div class="section-label animate">Projects &amp; Learning</div>
+      <div class="animate">
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-name">Unix-style 16-bit OS</div>
+            <span class="project-arrow">↗</span>
+          </div>
+          <p class="project-desc">A 16-bit operating system featuring a FAT16 file system, a two-stage bootloader, a physical memory manager, and a shell — written from scratch in C and Assembly.</p>
+          <a class="project-link" href="https://github.com/danielLublinsky/OS_proj-2022-16bit" target="_blank" rel="noopener">github.com/danielLublinsky/OS_proj-2022-16bit</a>
+          <div class="project-chips">
+            <span class="chip">C</span><span class="chip">x86 Assembly</span>
+            <span class="chip">FAT16</span><span class="chip">Bootloader</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- BACKGROUND -->
+    <div class="section" id="background">
+      <div class="section-label animate">Background</div>
+      <div class="bg-card animate">
+        <p class="bg-text">Software engineer based in Beersheva — the gateway to the Negev desert. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build, solder, and tune drones.</p>
+      </div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+  /* ── CURSOR ── */
+  const ring = document.getElementById('cursor-ring');
+  const dot  = document.getElementById('cursor-dot');
+  let rx=-100,ry=-100,tx=-100,ty=-100;
+
+  document.addEventListener('mousemove', e => {
+    tx=e.clientX; ty=e.clientY;
+    dot.style.left=tx+'px'; dot.style.top=ty+'px';
+    document.body.classList.add('cursor-ready');
+  });
+  (function animRing(){
+    rx+=(tx-rx)*.11; ry+=(ty-ry)*.11;
+    ring.style.left=rx+'px'; ring.style.top=ry+'px';
+    requestAnimationFrame(animRing);
+  })();
+  document.querySelectorAll('a,button,.project-card').forEach(el=>{
+    el.addEventListener('mouseenter',()=>document.body.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave',()=>document.body.classList.remove('cursor-hover'));
+  });
+
+  /* ── SPOTLIGHT ── */
+  const spotlight=document.getElementById('spotlight');
+  document.addEventListener('mousemove',e=>{
+    spotlight.style.left=e.clientX+'px'; spotlight.style.top=e.clientY+'px';
+  });
+
+  /* ── LEFT PARALLAX ── */
+  const leftTop=document.querySelector('.left-top');
+  document.addEventListener('mousemove',e=>{
+    const dx=(e.clientX/window.innerWidth-.5)*10;
+    const dy=(e.clientY/window.innerHeight-.5)*7;
+    leftTop.style.transform=`translate(${dx}px,${dy}px)`;
+  });
+
+  /* ── SCROLL ANIMATIONS ── */
+  const scroller=document.getElementById('scroll-container');
+  const observer=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{ if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);} });
+  },{root:scroller,threshold:.12});
+  document.querySelectorAll('.animate,.animate-children').forEach(el=>observer.observe(el));
+
+  /* ── ACTIVE NAV ── */
+  const navLinks=document.querySelectorAll('.nav-links a');
+  const navObs=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        navLinks.forEach(a=>a.classList.remove('active'));
+        const l=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
+        if(l)l.classList.add('active');
+      }
+    });
+  },{root:scroller,threshold:.4});
+  document.querySelectorAll('.section').forEach(s=>navObs.observe(s));
+
+  /* ── GITHUB STATS ── */
+
+  // Add your GitHub Personal Access Token (read:user scope) for private contribution data + heatmap
+  // Create one at: https://github.com/settings/tokens/new?scopes=read:user
+  const GITHUB_TOKEN = '__GITHUBKEY__';
+
+  const LANG_COLORS = {
+    'C#':'#178600','Python':'#3572A5','JavaScript':'#f1e05a','TypeScript':'#2b7489',
+    'C':'#555555','C++':'#f34b7d','Rust':'#dea584','Assembly':'#6E4C13',
+    'HTML':'#e34c26','CSS':'#563d7c','VBA':'#867db1','Shell':'#89e051',
+    'Vue':'#41b883','Go':'#00ADD8','Java':'#b07219','Swift':'#ffac45'
+  };
+  const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
+
+  function fmt(n) { return typeof n === 'number' ? n.toLocaleString() : n; }
+
+  function buildHeatmap(weeks, months) {
+    const monthLabels = months.map(m => `<span style="flex:${m.totalWeeks}">${m.name.slice(0,3)}</span>`).join('');
+    const grid = weeks.map(w =>
+      `<div class="heatmap-week">${
+        w.contributionDays.map(d =>
+          `<div class="heatmap-day" style="background:${d.contributionCount > 0 ? d.color : '#ebedf0'}"
+            title="${d.date}: ${d.contributionCount} contribution${d.contributionCount !== 1 ? 's' : ''}"></div>`
+        ).join('')
+      }</div>`
+    ).join('');
+    return `
+      <div class="heatmap-wrap">
+        <div class="heatmap-months">${monthLabels}</div>
+        <div class="heatmap">${grid}</div>
+        <div class="heatmap-legend">
+          <span>Less</span>
+          ${['#ebedf0','#9be9a8','#40c463','#30a14e','#216e39'].map(c =>
+            `<div class="heatmap-day" style="background:${c}"></div>`).join('')}
+          <span>More</span>
+        </div>
+      </div>`;
+  }
+
+  async function loadGH() {
+    const el = document.getElementById('gh-content');
+    try {
+      /* Always fetch repos via REST (public, no token needed) */
+      const reposP = fetch('https://api.github.com/users/danielLublinsky/repos?per_page=100').then(r => r.json());
+
+      /* GraphQL — requires token; gives private contributions + heatmap */
+      const gqlHeaders = { 'Content-Type': 'application/json' };
+      if (GITHUB_TOKEN) gqlHeaders['Authorization'] = `bearer ${GITHUB_TOKEN}`;
+
+      const gqlP = GITHUB_TOKEN
+        ? fetch('https://api.github.com/graphql', {
+            method: 'POST', headers: gqlHeaders,
+            body: JSON.stringify({ query: `{
+              user(login:"danielLublinsky") {
+                contributionsCollection {
+                  totalCommitContributions
+                  restrictedContributionsCount
+                  contributionCalendar {
+                    totalContributions
+                    months { name firstDay totalWeeks }
+                    weeks { contributionDays { contributionCount date color } }
+                  }
+                }
+                repositories(ownerAffiliations: OWNER, first: 100) {
+                  totalCount
+                  nodes { stargazerCount primaryLanguage { name } }
+                }
+                followers { totalCount }
+                createdAt
+              }
+            }` })
+          }).then(r => r.json()).catch(() => null)
+        : Promise.resolve(null);
+
+      /* Fallback commit count via search (public only, no token) */
+      const commitSearchP = !GITHUB_TOKEN
+        ? fetch('https://api.github.com/search/commits?q=author:danielLublinsky&per_page=1', {
+            headers: { 'Accept': 'application/vnd.github.cloak-preview' }
+          }).then(r => r.json()).catch(() => null)
+        : Promise.resolve(null);
+
+      const [repos, gql, commitSearch] = await Promise.all([reposP, gqlP, commitSearchP]);
+
+      /* Repo / language / star data — prefer GraphQL (includes private) over REST */
+      let repoCount, totalStars, langCounts = {};
+
+      if (gql && gql.data && gql.data.user) {
+        const gqlRepos = gql.data.user.repositories.nodes;
+        repoCount  = gql.data.user.repositories.totalCount;
+        totalStars = gqlRepos.reduce((s,r) => s + r.stargazerCount, 0);
+        gqlRepos.forEach(r => {
+          if (r.primaryLanguage) langCounts[r.primaryLanguage.name] = (langCounts[r.primaryLanguage.name]||0) + 1;
+        });
+      } else {
+        const repoList = Array.isArray(repos) ? repos : [];
+        repoCount  = repoList.length;
+        totalStars = repoList.reduce((s,r) => s + r.stargazers_count, 0);
+        repoList.forEach(r => { if (r.language) langCounts[r.language] = (langCounts[r.language]||0) + 1; });
+      }
+
+      const langTotal = Object.values(langCounts).reduce((a,b) => a+b, 0) || 1;
+      const topLangs  = Object.entries(langCounts).sort((a,b) => b[1]-a[1]).slice(0, 7);
+
+      /* Contribution data */
+      let totalContribs = '—', totalCommits = '—', privateCount = 0;
+      let heatmapHTML = '', hasPrivate = false;
+      let followers = '—', joinYear = '—';
+
+      if (gql && gql.data && gql.data.user) {
+        const u  = gql.data.user;
+        const cc = u.contributionsCollection;
+        const cal = cc.contributionCalendar;
+        totalContribs = cal.totalContributions;
+        totalCommits  = cc.totalCommitContributions + cc.restrictedContributionsCount;
+        privateCount  = cc.restrictedContributionsCount;
+        hasPrivate    = privateCount > 0;
+        followers     = u.followers.totalCount;
+        joinYear      = new Date(u.createdAt).getFullYear();
+        heatmapHTML   = buildHeatmap(cal.weeks, cal.months);
+      } else if (commitSearch) {
+        totalCommits = commitSearch.total_count ?? '—';
+      }
+
+      /* Fallback user info if no GraphQL */
+      if (joinYear === '—') {
+        const u = await fetch('https://api.github.com/users/danielLublinsky').then(r=>r.json()).catch(()=>({}));
+        followers = u.followers ?? '—';
+        joinYear  = u.created_at ? new Date(u.created_at).getFullYear() : '—';
+      }
+
+      const yearsOnGH = typeof joinYear === 'number' ? new Date().getFullYear() - joinYear : '—';
+
+      const stats = [
+        { num: repoCount,    label: hasPrivate ? 'Repos (incl. private)' : 'Repos' },
+        { num: totalCommits, label: hasPrivate ? 'Commits (incl. private)' : 'Commits' },
+        { num: totalStars,   label: hasPrivate ? 'Stars (incl. private)' : 'Stars' },
+        { num: followers,    label: 'Followers' },
+      ];
+
+      el.innerHTML = `
+        <div class="gh-stats-row">
+          ${stats.map((s,i) => `
+            <div class="gh-stat-card">
+              <div class="gh-stat-num" style="color:${STAT_COLORS[i]}">${fmt(s.num)}</div>
+              <div class="gh-stat-label">${s.label}</div>
+            </div>`).join('')}
+        </div>
+
+        ${heatmapHTML ? `
+          <div class="gh-sub-label">
+            Contributions — ${fmt(totalContribs)} this year
+            ${hasPrivate ? `<span class="private-badge">+ ${fmt(privateCount)} private</span>` : ''}
+          </div>
+          ${heatmapHTML}
+        ` : ''}
+
+        <div class="gh-sub-label" style="margin-top:${heatmapHTML?'1.4rem':'0'}">Languages</div>
+        <div class="lang-bar">
+          ${topLangs.map(([lang,count]) => `
+            <div class="lang-seg" style="flex:${count};background:${LANG_COLORS[lang]||'#ccc'}"
+              title="${lang}: ${Math.round(count/langTotal*100)}%"></div>`).join('')}
+        </div>
+        <div class="lang-legend">
+          ${topLangs.map(([lang,count]) => `
+            <span class="lang-item">
+              <span class="lang-dot" style="background:${LANG_COLORS[lang]||'#ccc'}"></span>
+              ${lang}&nbsp;<span style="opacity:.55">${Math.round(count/langTotal*100)}%</span>
+            </span>`).join('')}
+        </div>
+
+        <div class="gh-sub-label" style="margin-top:1.3rem">On GitHub since</div>
+        <p style="font-size:.82rem;color:var(--muted)">${joinYear} — ${yearsOnGH} year${yearsOnGH!==1?'s':''} ago</p>
+      `;
+      el.classList.add('visible');
+    } catch(e) {
+      el.innerHTML = '<p class="gh-loading">Could not load GitHub stats.</p>';
+    }
+  }
+
+  loadGH();
+
+  document.querySelectorAll('.aircraft').forEach(drone => {
+    drone.addEventListener('click', function () {
+      if (this.classList.contains('shot')) return;
+      const rect = this.getBoundingClientRect();
+      this.style.position = 'fixed';
+      this.style.left = rect.left + 'px';
+      this.style.top  = rect.top  + 'px';
+      this.style.bottom = 'auto';
+      this.classList.add('shot');
+      setTimeout(() => this.remove(), 700);
+    });
+  });
+</script>
+</body>
+</html>
