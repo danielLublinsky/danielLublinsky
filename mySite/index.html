@@ -1048,6 +1048,7 @@
               user(login:"danielLublinsky") {
                 contributionsCollection {
                   totalCommitContributions
+                  totalIssueContributions
                   restrictedContributionsCount
                   contributionCalendar {
                     totalContributions
@@ -1096,9 +1097,9 @@
       const topLangs  = Object.entries(langCounts).sort((a,b) => b[1]-a[1]).slice(0, 7);
 
       /* Contribution data */
-      let totalContribs = '—', totalCommits = '—', privateCount = 0;
+      let totalContribs = '—', totalCommits = '—', totalIssues = '—', privateCount = 0;
       let heatmapHTML = '', hasPrivate = false;
-      let followers = '—', joinYear = '—';
+      let joinYear = '—';
 
       if (gql && gql.data && gql.data.user) {
         const u  = gql.data.user;
@@ -1106,9 +1107,9 @@
         const cal = cc.contributionCalendar;
         totalContribs = cal.totalContributions;
         totalCommits  = cc.totalCommitContributions + cc.restrictedContributionsCount;
+        totalIssues   = cc.totalIssueContributions;
         privateCount  = cc.restrictedContributionsCount;
         hasPrivate    = privateCount > 0;
-        followers     = u.followers.totalCount;
         joinYear      = new Date(u.createdAt).getFullYear();
         heatmapHTML   = buildHeatmap(cal.weeks, cal.months);
       } else if (commitSearch) {
@@ -1118,8 +1119,7 @@
       /* Fallback user info if no GraphQL */
       if (joinYear === '—') {
         const u = await fetch('https://api.github.com/users/danielLublinsky').then(r=>r.json()).catch(()=>({}));
-        followers = u.followers ?? '—';
-        joinYear  = u.created_at ? new Date(u.created_at).getFullYear() : '—';
+        joinYear = u.created_at ? new Date(u.created_at).getFullYear() : '—';
       }
 
       const yearsOnGH = typeof joinYear === 'number' ? new Date().getFullYear() - joinYear : '—';
@@ -1128,7 +1128,7 @@
         { num: repoCount,    label: hasPrivate ? 'Repos (incl. private)' : 'Repos' },
         { num: totalCommits, label: hasPrivate ? 'Commits (incl. private)' : 'Commits' },
         { num: totalStars,   label: hasPrivate ? 'Stars (incl. private)' : 'Stars' },
-        { num: followers,    label: 'Followers' },
+        { num: totalIssues,  label: 'Issues Opened' },
       ];
 
       el.innerHTML = `
