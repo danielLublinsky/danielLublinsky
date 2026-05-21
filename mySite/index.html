@@ -182,11 +182,25 @@
     .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .skill-group-name { font-size: .8rem; font-weight: 700; color: var(--text); margin-bottom: .55rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
+    @keyframes pillFloat {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-4px); }
+    }
     .pill {
       font-size: .73rem; padding: .22rem .65rem; border-radius: 999px;
       border: 1px solid; transition: filter .2s, transform .2s cubic-bezier(0.22,1,0.36,1), box-shadow .2s;
+      animation: pillFloat 3.2s ease-in-out infinite;
     }
-    .pill:hover { filter: brightness(0.9); transform: translateY(-2px) scale(1.07); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
+    .skill-tags .pill:nth-child(2)  { animation-delay: .55s; }
+    .skill-tags .pill:nth-child(3)  { animation-delay: 1.1s; }
+    .skill-tags .pill:nth-child(4)  { animation-delay: 1.65s; }
+    .skill-tags .pill:nth-child(5)  { animation-delay: .3s; }
+    .skill-tags .pill:nth-child(6)  { animation-delay: .85s; }
+    .skill-tags .pill:nth-child(7)  { animation-delay: 1.4s; }
+    .skill-tags .pill:nth-child(8)  { animation-delay: .7s; }
+    .skill-tags .pill:nth-child(9)  { animation-delay: 1.25s; }
+    .skill-tags .pill:nth-child(10) { animation-delay: .45s; }
+    .pill:hover { animation: none; filter: brightness(0.9); transform: translateY(-2px) scale(1.07); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
     .pill i { font-size: 1em; vertical-align: -0.1em; margin-right: 0.22em; }
     .pill svg { width: 11px; height: 11px; vertical-align: -0.05em; margin-right: 0.22em; display: inline-block; }
     .pill img { width: 12px; height: 12px; vertical-align: -0.15em; margin-right: 0.22em; border-radius: 2px; }
@@ -1086,26 +1100,27 @@
       `;
       el.classList.add('visible');
 
-      /* stat card stagger entrance */
-      el.querySelectorAll('.gh-stat-card').forEach((card, i) => {
-        setTimeout(() => card.classList.add('appear'), i * 120);
-      });
+      /* fire animations only when the section scrolls into view */
+      function triggerGHAnimations() {
+        el.querySelectorAll('.gh-stat-card').forEach((card, i) => {
+          setTimeout(() => card.classList.add('appear'), i * 120);
+        });
+        el.querySelectorAll('.gh-stat-num').forEach((numEl, i) => {
+          const target = stats[i].num;
+          if (typeof target === 'number') setTimeout(() => animateCounter(numEl, target, 1400), i * 180);
+        });
+        el.querySelectorAll('.lang-seg').forEach((seg, i) => {
+          setTimeout(() => seg.classList.add('fill'), 300 + i * 60);
+        });
+        el.querySelectorAll('.heatmap-week').forEach((week, i) => {
+          setTimeout(() => week.classList.add('appear'), i * 12);
+        });
+      }
 
-      /* counter count-up */
-      el.querySelectorAll('.gh-stat-num').forEach((numEl, i) => {
-        const target = stats[i].num;
-        if (typeof target === 'number') setTimeout(() => animateCounter(numEl, target, 1400), i * 180);
-      });
-
-      /* lang bar animated fill */
-      el.querySelectorAll('.lang-seg').forEach((seg, i) => {
-        setTimeout(() => seg.classList.add('fill'), 300 + i * 60);
-      });
-
-      /* heatmap week stagger */
-      el.querySelectorAll('.heatmap-week').forEach((week, i) => {
-        setTimeout(() => week.classList.add('appear'), i * 12);
-      });
+      const ghObs = new IntersectionObserver(entries => {
+        if (entries[0].isIntersecting) { triggerGHAnimations(); ghObs.disconnect(); }
+      }, { root: scroller, threshold: 0.1 });
+      ghObs.observe(el);
     } catch(e) {
       el.innerHTML = '<p class="gh-loading">Could not load GitHub stats.</p>';
     }
