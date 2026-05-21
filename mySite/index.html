@@ -903,17 +903,32 @@
   document.querySelectorAll('.animate,.animate-children').forEach(el=>observer.observe(el));
 
   /* ── ACTIVE NAV ── */
-  const navLinks=document.querySelectorAll('.nav-links a');
-  const navObs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting){
-        navLinks.forEach(a=>a.classList.remove('active'));
-        const l=document.querySelector(`.nav-links a[href="#${e.target.id}"]`);
-        if(l)l.classList.add('active');
-      }
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const sections = Array.from(document.querySelectorAll('.section'));
+
+  function updateActiveNav() {
+    const scrollerTop = scroller.getBoundingClientRect().top;
+    const trigger = scrollerTop + scroller.clientHeight * 0.25;
+    let active = sections[0];
+    for (const s of sections) {
+      if (s.getBoundingClientRect().top <= trigger) active = s;
+    }
+    navLinks.forEach(a => a.classList.remove('active'));
+    const link = document.querySelector(`.nav-links a[href="#${active.id}"]`);
+    if (link) link.classList.add('active');
+  }
+
+  scroller.addEventListener('scroll', updateActiveNav, { passive: true });
+  updateActiveNav();
+
+  /* smooth-scroll nav clicks inside the scroller */
+  navLinks.forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
-  },{root:scroller,threshold:.4});
-  document.querySelectorAll('.section').forEach(s=>navObs.observe(s));
+  });
 
   /* ── GITHUB STATS ── */
 
