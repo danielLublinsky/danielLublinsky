@@ -85,7 +85,9 @@
     /* ── LEFT PANEL ── */
     .left {
       width: 300px; min-width: 300px; height: 100vh; position: sticky; top: 0;
-      background: linear-gradient(175deg, #edf1ff 0%, #f5f0e8 100%);
+      background: linear-gradient(-45deg, #edf1ff, #f5f0e8, #e9f0ff, #ede8f8);
+      background-size: 400% 400%;
+      animation: gradientShift 18s ease infinite;
       box-shadow: 4px 0 28px rgba(42,92,255,.08);
       padding: 3rem 2.2rem 10rem; display: flex; flex-direction: column;
       justify-content: space-between; z-index: 2;
@@ -116,7 +118,7 @@
       margin-bottom: .45rem;
       background: linear-gradient(135deg,#1540d6 0%,#5b82ff 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      animation: nameFloat 6s ease-in-out infinite;
+      animation: justFadeIn .9s ease .12s both, nameFloat 6s ease-in-out 1.2s infinite;
     }
     .cv-download {
       display: block; text-align: center; margin: 0 0 1.4rem;
@@ -124,6 +126,8 @@
       font-size: .75rem; font-weight: 700; color: var(--blue);
       text-decoration: none; letter-spacing: .06em; text-transform: uppercase;
       transition: background .2s, color .2s;
+      position: relative; overflow: hidden;
+      animation: slideInLeft .7s cubic-bezier(0.22,1,0.36,1) .42s both, cvPulse 3s ease-in-out 1.5s infinite;
     }
     .cv-download:hover { background: var(--blue); color: #fff; }
     .role {
@@ -301,6 +305,96 @@
     .animate-children.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.28s; }
     .animate-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.42s; }
     .animate-children.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.56s; }
+
+    /* ── LIVE ANIMATIONS ── */
+    @keyframes gradientShift {
+      0%,100% { background-position: 0% 50%; }
+      50%      { background-position: 100% 50%; }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-22px); }
+      to   { opacity: 1; transform: none; }
+    }
+    @keyframes justFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes cvShimmer {
+      0%, 30% { left: -80%; }
+      100%    { left: 160%; }
+    }
+    @keyframes cvPulse {
+      0%,100% { box-shadow: 0 0 0 0 rgba(42,92,255,0); }
+      50%     { box-shadow: 0 0 0 6px rgba(42,92,255,.15); }
+    }
+    @keyframes underlineGrow {
+      from { width: 0; }
+      to   { width: 100%; }
+    }
+    @keyframes fadeSlideUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: none; }
+    }
+
+    /* left panel stagger */
+    .avail-badge { animation: slideInLeft .7s cubic-bezier(0.22,1,0.36,1) .05s both; }
+    .role        { animation: slideInLeft .7s cubic-bezier(0.22,1,0.36,1) .28s both; }
+    .nav-links   { animation: slideInLeft .7s cubic-bezier(0.22,1,0.36,1) .56s both; }
+    .left-bottom { animation: slideInLeft .7s cubic-bezier(0.22,1,0.36,1) .70s both; }
+
+    /* cv shimmer sweep */
+    .cv-download::before {
+      content: ''; position: absolute; top: 0; left: -80%; width: 50%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(42,92,255,.12), transparent);
+      animation: cvShimmer 3s ease-in-out 2s infinite;
+      pointer-events: none; border-radius: inherit;
+    }
+    /* nav underline grow on hover/active */
+    .nav-links a { position: relative; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: 3px; left: .7rem; right: .7rem;
+      height: 1.5px; background: var(--blue);
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .25s cubic-bezier(0.22,1,0.36,1);
+    }
+    .nav-links a:hover::after, .nav-links a.active::after { transform: scaleX(1); }
+
+    /* stat card hover lift */
+    .gh-stat-card:hover { transform: translateY(-5px) scale(1.04); box-shadow: 0 10px 28px rgba(0,0,0,.1); }
+
+    /* exp logo bob on row hover */
+    .exp-logo { transition: transform .35s cubic-bezier(0.22,1,0.36,1); }
+    .exp-item:hover .exp-logo { transform: scale(1.12) rotate(-4deg); }
+
+    /* project name color shift */
+    .project-name { transition: color .3s; }
+    .project-card:hover .project-name { color: var(--blue); }
+
+    /* skill group name underline grow after scroll-in */
+    .skill-group-name { position: relative; display: inline-block; }
+    .skill-group-name::after {
+      content: ''; position: absolute; bottom: -2px; left: 0;
+      width: 0; height: 1.5px; background: currentColor;
+      opacity: .4; border-radius: 1px;
+    }
+    .animate-children.visible .skill-group:nth-child(1) .skill-group-name::after { animation: underlineGrow .5s ease .65s both; }
+    .animate-children.visible .skill-group:nth-child(2) .skill-group-name::after { animation: underlineGrow .5s ease .79s both; }
+    .animate-children.visible .skill-group:nth-child(3) .skill-group-name::after { animation: underlineGrow .5s ease .93s both; }
+    .animate-children.visible .skill-group:nth-child(4) .skill-group-name::after { animation: underlineGrow .5s ease 1.07s both; }
+    .animate-children.visible .skill-group:nth-child(5) .skill-group-name::after { animation: underlineGrow .5s ease 1.21s both; }
+
+    /* lang bar animated fill */
+    .lang-seg { transform-origin: left; animation: none; }
+    .lang-seg.fill { animation: langFill .9s cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes langFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+    /* heatmap week stagger */
+    .heatmap-week { opacity: 0; animation: none; }
+    .heatmap-week.appear { animation: fadeSlideUp .4s ease both; }
+
+    /* stat card entrance stagger */
+    .gh-stat-card { opacity: 0; transition: transform .3s cubic-bezier(0.22,1,0.36,1), box-shadow .3s; }
+    .gh-stat-card.appear { animation: fadeSlideUp .5s cubic-bezier(0.22,1,0.36,1) both; opacity: 1; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
@@ -549,7 +643,7 @@
   <aside class="left">
     <div class="left-top">
       <h1>Daniel<br>Lublinsky</h1>
-      <p class="role">Software Engineer</p>
+      <p class="role" id="role-text"></p>
       <a class="cv-download" href="MYCV_2026.pdf" download>Download CV</a>
       <ul class="nav-links">
         <li><a href="#skills">Skills</a></li>
@@ -991,9 +1085,26 @@
         <p style="font-size:.82rem;color:var(--muted)">${joinYear} — ${yearsOnGH} year${yearsOnGH!==1?'s':''} ago</p>
       `;
       el.classList.add('visible');
+
+      /* stat card stagger entrance */
+      el.querySelectorAll('.gh-stat-card').forEach((card, i) => {
+        setTimeout(() => card.classList.add('appear'), i * 120);
+      });
+
+      /* counter count-up */
       el.querySelectorAll('.gh-stat-num').forEach((numEl, i) => {
         const target = stats[i].num;
         if (typeof target === 'number') setTimeout(() => animateCounter(numEl, target, 1400), i * 180);
+      });
+
+      /* lang bar animated fill */
+      el.querySelectorAll('.lang-seg').forEach((seg, i) => {
+        setTimeout(() => seg.classList.add('fill'), 300 + i * 60);
+      });
+
+      /* heatmap week stagger */
+      el.querySelectorAll('.heatmap-week').forEach((week, i) => {
+        setTimeout(() => week.classList.add('appear'), i * 12);
       });
     } catch(e) {
       el.innerHTML = '<p class="gh-loading">Could not load GitHub stats.</p>';
@@ -1001,6 +1112,22 @@
   }
 
   loadGH();
+
+  /* typewriter for role */
+  (function typewriter() {
+    const el = document.getElementById('role-text');
+    if (!el) return;
+    const phrases = ['Software Engineer', 'FPV Drone Builder', 'Open-Source Contributor'];
+    let pi = 0, ci = 0, deleting = false;
+    function tick() {
+      const phrase = phrases[pi];
+      el.textContent = deleting ? phrase.slice(0, ci--) : phrase.slice(0, ci++);
+      if (!deleting && ci > phrase.length) { deleting = true; setTimeout(tick, 1800); return; }
+      if (deleting && ci < 0)  { deleting = false; pi = (pi + 1) % phrases.length; ci = 0; setTimeout(tick, 400); return; }
+      setTimeout(tick, deleting ? 45 : 85);
+    }
+    setTimeout(tick, 900);
+  })();
 
   document.querySelectorAll('.aircraft').forEach(drone => {
     drone.addEventListener('click', function () {
