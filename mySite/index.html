@@ -172,6 +172,8 @@
 
     /* ── SKILLS ── */
     .skills-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.6rem 2.5rem; }
+    .skills-grid > *:nth-child(5) { grid-column: 1 / -1; }
+    .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
     .skill-group-name { font-size: .8rem; font-weight: 700; color: var(--text); margin-bottom: .55rem; }
     .skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
     .pill {
@@ -186,6 +188,7 @@
     .pill-indigo { background: #ede9fe; border-color: rgba(99,102,241,.3);  color: #4f46e5; }
     .pill-green  { background: #d1fae5; border-color: rgba(16,185,129,.3);  color: #047857; }
     .pill-amber  { background: #fef3c7; border-color: rgba(245,158,11,.35); color: #b45309; }
+    .pill-cyan   { background: #ecfeff; border-color: rgba(6,182,212,.3);  color: #0e7490; }
 
     /* ── EXPERIENCE ── */
     .exp-item {
@@ -307,6 +310,7 @@
       .section { margin-bottom: 3rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
       .gh-stats-row { grid-template-columns: 1fr 1fr; }
+      .projects-grid { grid-template-columns: 1fr; }
       #cursor-ring, #cursor-dot { display: none !important; }
     }
     @media (max-width: 480px) {
@@ -804,6 +808,18 @@
           </div>
         </div>
 
+        <div class="skill-group">
+          <div class="skill-group-name">Hardware &amp; FPV</div>
+          <div class="skill-tags">
+            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>Betaflight</span>
+            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M8 9V6"/><path d="M16 9V6"/><line x1="7" y1="14" x2="11" y2="14"/><line x1="7" y1="17" x2="17" y2="17"/></svg>EdgeTX</span>
+            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>ELRS</span>
+            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>Flight Controllers</span>
+            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>PID Tuning</span>
+            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>Soldering</span>
+          </div>
+        </div>
+
       </div>
     </div>
 
@@ -868,7 +884,7 @@
     <!-- PROJECTS -->
     <div class="section" id="projects">
       <div class="section-label animate">Projects &amp; Learning</div>
-      <div class="animate">
+      <div class="projects-grid animate-children">
         <div class="project-card">
           <div class="project-top">
             <div class="project-name">Unix-style 16-bit OS</div>
@@ -879,6 +895,21 @@
           <div class="project-chips">
             <span class="chip">C</span><span class="chip">x86 Assembly</span>
             <span class="chip">FAT16</span><span class="chip">Bootloader</span>
+          </div>
+        </div>
+        <div class="project-card">
+          <div class="project-top">
+            <div class="project-name">FPV Drone Lab</div>
+            <span class="project-arrow" style="opacity:.5">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+            </span>
+          </div>
+          <p class="project-desc">Personal workshop for building, repairing, and tuning FPV quadcopters from scratch. Full-stack hardware work: frame assembly, soldering, flight-controller configuration in Betaflight, EdgeTX Lua scripting on the radio, ExpressLRS link setup, and iterative PID tuning in the field.</p>
+          <div class="project-chips">
+            <span class="chip">Betaflight</span><span class="chip">EdgeTX</span>
+            <span class="chip">ELRS</span><span class="chip">Lua</span>
+            <span class="chip">C</span><span class="chip">PID Tuning</span>
+            <span class="chip">Hardware</span>
           </div>
         </div>
       </div>
