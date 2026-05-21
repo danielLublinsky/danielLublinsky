@@ -100,15 +100,23 @@
     }
     .avail-dot {
       width: 6px; height: 6px; border-radius: 50%; background: #059669;
-      animation: pulse 2s ease-in-out infinite;
+      animation: pulse 2.4s ease-in-out infinite;
     }
-    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:.5;transform:scale(1.3)} }
+    @keyframes pulse {
+      0%,100% { opacity:1; transform:scale(1); box-shadow: 0 0 0 0 rgba(5,150,105,.5); }
+      50%      { opacity:.5; transform:scale(1.4); box-shadow: 0 0 0 5px rgba(5,150,105,0); }
+    }
 
+    @keyframes nameFloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-7px); }
+    }
     .left-top h1 {
       font-size: 2.4rem; font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
       margin-bottom: .45rem;
       background: linear-gradient(135deg,#1540d6 0%,#5b82ff 100%);
       -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      animation: nameFloat 6s ease-in-out infinite;
     }
     .cv-download {
       display: block; text-align: center; margin: 0 0 1.4rem;
@@ -172,9 +180,9 @@
     .skill-tags { display: flex; flex-wrap: wrap; gap: .38rem; }
     .pill {
       font-size: .73rem; padding: .22rem .65rem; border-radius: 999px;
-      border: 1px solid; transition: filter .15s;
+      border: 1px solid; transition: filter .2s, transform .2s cubic-bezier(0.22,1,0.36,1), box-shadow .2s;
     }
-    .pill:hover { filter: brightness(0.93); }
+    .pill:hover { filter: brightness(0.9); transform: translateY(-2px) scale(1.07); box-shadow: 0 4px 14px rgba(0,0,0,.1); }
     .pill i { font-size: 1em; vertical-align: -0.1em; margin-right: 0.22em; }
     .pill svg { width: 11px; height: 11px; vertical-align: -0.05em; margin-right: 0.22em; display: inline-block; }
     .pill img { width: 12px; height: 12px; vertical-align: -0.15em; margin-right: 0.22em; border-radius: 2px; }
@@ -188,10 +196,10 @@
     /* ── EXPERIENCE ── */
     .exp-item {
       margin-bottom: 2rem; padding-bottom: 2rem; padding-left: 1.1rem;
-      border-bottom: 1px solid var(--border); border-left: 2px solid rgba(42,92,255,.2);
-      transition: border-left-color .2s;
+      border-bottom: 1px solid var(--border); border-left: 3px solid rgba(42,92,255,.15);
+      transition: border-left-color .35s ease, border-left-width .35s ease, padding-left .35s ease;
     }
-    .exp-item:hover { border-left-color: var(--blue); }
+    .exp-item:hover { border-left-color: var(--blue); border-left-width: 4px; padding-left: 1.3rem; }
     .exp-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
     .exp-header { display: flex; align-items: center; gap: .85rem; margin-bottom: .4rem; }
     .exp-logo {
@@ -258,9 +266,9 @@
     /* ── PROJECT CARD ── */
     .project-card {
       border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.6rem;
-      background: #fff; transition: box-shadow .2s, border-color .2s, transform .2s;
+      background: #fff; transition: box-shadow .35s cubic-bezier(0.22,1,0.36,1), border-color .35s ease, transform .35s cubic-bezier(0.22,1,0.36,1);
     }
-    .project-card:hover { box-shadow: 0 6px 28px rgba(42,92,255,.1); border-color: rgba(42,92,255,.35); transform: translateY(-2px); }
+    .project-card:hover { box-shadow: 0 16px 48px rgba(42,92,255,.16); border-color: rgba(42,92,255,.5); transform: translateY(-6px) scale(1.01); }
     .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; }
     .project-name { font-size: .9rem; font-weight: 700; color: var(--text); }
     .project-arrow { font-size: 1rem; color: var(--blue); opacity: .4; transition: opacity .2s; }
@@ -279,14 +287,20 @@
     .bg-text { font-size: .84rem; color: var(--muted); line-height: 1.8; }
 
     /* ── SCROLL ANIMATIONS ── */
-    .animate { opacity: 0; transform: translateY(22px); transition: opacity .5s ease, transform .5s ease; }
+    @keyframes dotPop {
+      0%   { transform: scale(0) rotate(-30deg); }
+      65%  { transform: scale(1.4) rotate(8deg); }
+      100% { transform: scale(1)   rotate(0deg); }
+    }
+    .animate { opacity: 0; transform: translateY(36px); transition: opacity .95s cubic-bezier(0.22,1,0.36,1), transform .95s cubic-bezier(0.22,1,0.36,1); }
     .animate.visible { opacity: 1; transform: none; }
-    .animate-children > * { opacity: 0; transform: translateY(16px); transition: opacity .4s ease, transform .4s ease; }
+    .section-label.animate.visible::before { animation: dotPop .7s cubic-bezier(0.22,1,0.36,1) both; }
+    .animate-children > * { opacity: 0; transform: translateY(24px); transition: opacity .85s cubic-bezier(0.22,1,0.36,1), transform .85s cubic-bezier(0.22,1,0.36,1); }
     .animate-children.visible > *:nth-child(1) { opacity:1; transform:none; transition-delay:0s; }
-    .animate-children.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.08s; }
-    .animate-children.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.16s; }
-    .animate-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.24s; }
-    .animate-children.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.32s; }
+    .animate-children.visible > *:nth-child(2) { opacity:1; transform:none; transition-delay:.14s; }
+    .animate-children.visible > *:nth-child(3) { opacity:1; transform:none; transition-delay:.28s; }
+    .animate-children.visible > *:nth-child(4) { opacity:1; transform:none; transition-delay:.42s; }
+    .animate-children.visible > *:nth-child(5) { opacity:1; transform:none; transition-delay:.56s; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
@@ -809,6 +823,16 @@
 
   function fmt(n) { return typeof n === 'number' ? n.toLocaleString() : n; }
 
+  function animateCounter(el, target, duration) {
+    const t0 = performance.now();
+    (function tick(now) {
+      const p = Math.min((now - t0) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased).toLocaleString();
+      if (p < 1) requestAnimationFrame(tick);
+    })(t0);
+  }
+
   function buildHeatmap(weeks, months) {
     const monthLabels = months.map(m => `<span style="flex:${m.totalWeeks}">${m.name.slice(0,3)}</span>`).join('');
     const grid = weeks.map(w =>
@@ -936,7 +960,7 @@
         <div class="gh-stats-row">
           ${stats.map((s,i) => `
             <div class="gh-stat-card">
-              <div class="gh-stat-num" style="color:${STAT_COLORS[i]}">${fmt(s.num)}</div>
+              <div class="gh-stat-num" style="color:${STAT_COLORS[i]}">${typeof s.num === 'number' ? '0' : fmt(s.num)}</div>
               <div class="gh-stat-label">${s.label}</div>
             </div>`).join('')}
         </div>
@@ -967,6 +991,10 @@
         <p style="font-size:.82rem;color:var(--muted)">${joinYear} — ${yearsOnGH} year${yearsOnGH!==1?'s':''} ago</p>
       `;
       el.classList.add('visible');
+      el.querySelectorAll('.gh-stat-num').forEach((numEl, i) => {
+        const target = stats[i].num;
+        if (typeof target === 'number') setTimeout(() => animateCounter(numEl, target, 1400), i * 180);
+      });
     } catch(e) {
       el.innerHTML = '<p class="gh-loading">Could not load GitHub stats.</p>';
     }
