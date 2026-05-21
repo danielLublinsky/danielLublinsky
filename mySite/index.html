@@ -183,6 +183,7 @@
     .pill:hover { filter: brightness(0.93); }
     .pill i { font-size: 1em; vertical-align: -0.1em; margin-right: 0.22em; }
     .pill svg { width: 11px; height: 11px; vertical-align: -0.05em; margin-right: 0.22em; display: inline-block; }
+    .pill img { width: 12px; height: 12px; vertical-align: -0.15em; margin-right: 0.22em; border-radius: 2px; }
     /* per-category colors */
     .pill-blue   { background: #eef2ff; border-color: rgba(42,92,255,.25); color: #2a4dcc; }
     .pill-indigo { background: #ede9fe; border-color: rgba(99,102,241,.3);  color: #4f46e5; }
@@ -277,6 +278,7 @@
     .chip { font-size: .7rem; padding: .18rem .55rem; background: #f4f6fb; border: 1px solid #d8dff0; border-radius: 4px; color: #555; }
     .chip i { font-size: 1em; vertical-align: -0.1em; margin-right: 0.2em; }
     .chip svg { width: 10px; height: 10px; vertical-align: -0.05em; margin-right: 0.2em; display: inline-block; }
+    .chip img { width: 11px; height: 11px; vertical-align: -0.15em; margin-right: 0.2em; border-radius: 2px; }
 
     /* ── BACKGROUND ── */
     .bg-card { border-left: 3px solid var(--amber); padding: 1rem 1.3rem; background: #fffbf0; border-radius: 0 8px 8px 0; }
@@ -813,9 +815,9 @@
         <div class="skill-group">
           <div class="skill-group-name">Hardware &amp; FPV</div>
           <div class="skill-tags">
-            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>Betaflight</span>
-            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M8 9V6"/><path d="M16 9V6"/><line x1="7" y1="14" x2="11" y2="14"/><line x1="7" y1="17" x2="17" y2="17"/></svg>EdgeTX</span>
-            <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>ELRS</span>
+            <span class="pill pill-cyan"><img src="https://github.com/betaflight.png?size=24" alt="Betaflight">Betaflight</span>
+            <span class="pill pill-cyan"><img src="https://github.com/EdgeTX.png?size=24" alt="EdgeTX">EdgeTX</span>
+            <span class="pill pill-cyan"><img src="https://github.com/ExpressLRS.png?size=24" alt="ELRS">ELRS</span>
             <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="4" y="4" width="16" height="16" rx="2"/><rect x="9" y="9" width="6" height="6"/><path d="M9 1v3M15 1v3M9 20v3M15 20v3M1 9h3M1 15h3M20 9h3M20 15h3"/></svg>Flight Controllers</span>
             <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>PID Tuning</span>
             <span class="pill pill-cyan"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="m12 19 7-7 3 3-7 7-3-3z"/><path d="m18 13-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><path d="m2 2 7.586 7.586"/><circle cx="11" cy="11" r="2"/></svg>Soldering</span>
@@ -906,12 +908,12 @@
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
             </span>
           </div>
-          <p class="project-desc">Personal workshop for building, repairing, and tuning FPV quadcopters from scratch. Full-stack hardware work: frame assembly, soldering, flight-controller configuration in Betaflight, EdgeTX Lua scripting on the radio, ExpressLRS link setup, and iterative PID tuning in the field. Active open-source contributor to the Betaflight firmware.</p>
+          <p class="project-desc">Personal workshop for building, repairing, and tuning FPV quadcopters from scratch. Full-stack hardware work: frame assembly, soldering, flight-controller configuration in Betaflight, EdgeTX Lua scripting on the radio, ExpressLRS link setup, and iterative PID tuning in the field. With contributions to the Betaflight open-source project.</p>
           <a class="project-link" href="https://github.com/betaflight/betaflight" target="_blank" rel="noopener">github.com/betaflight/betaflight</a>
           <div class="project-chips">
-            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>Betaflight</span>
-            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><rect x="3" y="9" width="18" height="12" rx="2"/><path d="M8 9V6"/><path d="M16 9V6"/><line x1="7" y1="14" x2="11" y2="14"/><line x1="7" y1="17" x2="17" y2="17"/></svg>EdgeTX</span>
-            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></svg>ELRS</span>
+            <span class="chip"><img src="https://github.com/betaflight.png?size=24" alt="Betaflight">Betaflight</span>
+            <span class="chip"><img src="https://github.com/EdgeTX.png?size=24" alt="EdgeTX">EdgeTX</span>
+            <span class="chip"><img src="https://github.com/ExpressLRS.png?size=24" alt="ELRS">ELRS</span>
             <span class="chip"><i class="devicon-lua-plain colored"></i>Lua</span>
             <span class="chip"><i class="devicon-c-plain colored"></i>C</span>
             <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>PID Tuning</span>
