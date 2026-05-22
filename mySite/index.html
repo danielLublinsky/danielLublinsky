@@ -65,15 +65,19 @@
       0%   { transform: translateY(0)    rotate(0deg);   opacity: 1; }
       100% { transform: translateY(320px) rotate(60deg); opacity: 0; }
     }
+    @keyframes droneFloat {
+      0%, 100% { translate: 0 0px; }
+      50%       { translate: 0 -10px; }
+    }
     .aircraft.shot { animation: droneFall .7s ease-in forwards !important; }
-    .fpva     { width: 48px; height:48px; bottom:52px; animation: flyAcross 9s  linear infinite; animation-delay:-3s; }
-    .fpvb     { width: 36px; height:36px; bottom:44px; animation: flyAcross 6s  linear infinite; animation-delay:-1s; }
-    .fpvc     { width: 42px; height:42px; bottom:60px; animation: flyAcross 13s linear infinite; animation-delay:-7s; }
-    .fpvd     { width: 30px; height:30px; bottom:50px; animation: flyAcross 8s  linear infinite; animation-delay:-4s; }
-    .fpve     { width: 54px; height:54px; bottom:46px; animation: flyAcross 10s linear infinite; animation-delay:-9s; }
-    .fpvf     { width: 38px; height:38px; bottom:56px; animation: flyAcross 7s  linear infinite; animation-delay:-2s; }
-    .fpvg     { width: 44px; height:44px; bottom:48px; animation: flyAcross 12s linear infinite; animation-delay:-6s; }
-    .fpvh     { width: 32px; height:32px; bottom:62px; animation: flyAcross 5s  linear infinite; animation-delay:-8s; }
+    .fpva { width:48px; height:48px; bottom:52px; animation: flyAcross 9s  linear infinite -3s,  droneFloat 2.7s ease-in-out infinite 0.0s; }
+    .fpvb { width:36px; height:36px; bottom:44px; animation: flyAcross 6s  linear infinite -1s,  droneFloat 2.3s ease-in-out infinite 0.5s; }
+    .fpvc { width:42px; height:42px; bottom:60px; animation: flyAcross 13s linear infinite -7s,  droneFloat 3.1s ease-in-out infinite 1.1s; }
+    .fpvd { width:30px; height:30px; bottom:50px; animation: flyAcross 8s  linear infinite -4s,  droneFloat 2.5s ease-in-out infinite 0.8s; }
+    .fpve { width:54px; height:54px; bottom:46px; animation: flyAcross 10s linear infinite -9s,  droneFloat 3.4s ease-in-out infinite 0.3s; }
+    .fpvf { width:38px; height:38px; bottom:56px; animation: flyAcross 7s  linear infinite -2s,  droneFloat 2.8s ease-in-out infinite 1.4s; }
+    .fpvg { width:44px; height:44px; bottom:48px; animation: flyAcross 12s linear infinite -6s,  droneFloat 3.0s ease-in-out infinite 0.7s; }
+    .fpvh { width:32px; height:32px; bottom:62px; animation: flyAcross 5s  linear infinite -8s,  droneFloat 2.2s ease-in-out infinite 1.7s; }
     @keyframes flyAcross {
       from { transform: translateX(-150px); }
       to   { transform: translateX(110vw); }
