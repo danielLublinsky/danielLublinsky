@@ -283,10 +283,28 @@
 
     /* ── PROJECT CARD ── */
     .project-card {
-      border: 1px solid var(--border); border-radius: 10px; padding: 1.5rem 1.6rem;
+      border: 1px solid var(--border); border-radius: 10px; padding: 0;
       background: #fff; transition: box-shadow .35s cubic-bezier(0.22,1,0.36,1), border-color .35s ease, transform .35s cubic-bezier(0.22,1,0.36,1);
+      overflow: hidden; display: flex; flex-direction: column;
     }
     .project-card:hover { box-shadow: 0 16px 48px rgba(42,92,255,.16); border-color: rgba(42,92,255,.5); transform: translateY(-6px) scale(1.01); }
+    .project-img {
+      width: 100%; height: 170px; overflow: hidden; flex-shrink: 0;
+      background: #0d1117; position: relative;
+    }
+    .project-img img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform .5s cubic-bezier(0.22,1,0.36,1);
+    }
+    .project-card:hover .project-img img { transform: scale(1.06); }
+    .project-img-placeholder {
+      width: 100%; height: 100%; display: flex; flex-direction: column;
+      align-items: center; justify-content: center; gap: .5rem;
+      background: linear-gradient(135deg, #0f1923 0%, #1a2a40 100%);
+      color: rgba(255,255,255,.25); font-size: .7rem; letter-spacing: .08em;
+    }
+    .project-img-placeholder svg { opacity: .3; }
+    .project-body { padding: 1.2rem 1.4rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
     .project-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: .5rem; }
     .project-name { font-size: .9rem; font-weight: 700; color: var(--text); }
     .project-arrow { font-size: 1rem; color: var(--blue); opacity: .4; transition: opacity .2s; }
@@ -440,7 +458,8 @@
       .right { padding: 1.2rem 1rem 2rem; }
       .skills-grid { grid-template-columns: 1fr; }
       .gh-stats-row { grid-template-columns: 1fr 1fr; }
-      .project-card { padding: 1.1rem 1.2rem; }
+      .project-img { height: 130px; }
+      .project-body { padding: .9rem 1rem 1.1rem; }
     }
   </style>
 </head>
@@ -816,34 +835,48 @@
       <div class="section-label animate">Projects &amp; Hobbies</div>
       <div class="projects-grid animate-children">
         <div class="project-card">
-          <div class="project-top">
-            <div class="project-name">Unix-style 16-bit OS</div>
-            <span class="project-arrow">↗</span>
+          <div class="project-img">
+            <img src="https://raw.githubusercontent.com/danielLublinsky/OS_proj-2022-16bit/master/gifCoverVid.gif"
+                 alt="16-bit OS demo" loading="lazy">
           </div>
-          <p class="project-desc">A 16-bit operating system featuring a FAT16 file system, a two-stage bootloader, a physical memory manager, and a shell — written from scratch in C and Assembly.</p>
-          <a class="project-link" href="https://github.com/danielLublinsky/OS_proj-2022-16bit" target="_blank" rel="noopener">github.com/danielLublinsky/OS_proj-2022-16bit</a>
-          <div class="project-chips">
-            <span class="chip">C</span><span class="chip">x86 Assembly</span>
-            <span class="chip">FAT16</span><span class="chip">Bootloader</span>
+          <div class="project-body">
+            <div class="project-top">
+              <div class="project-name">Unix-style 16-bit OS</div>
+              <span class="project-arrow">↗</span>
+            </div>
+            <p class="project-desc">A 16-bit operating system featuring a FAT16 file system, a two-stage bootloader, a physical memory manager, and a shell — written from scratch in C and Assembly.</p>
+            <a class="project-link" href="https://github.com/danielLublinsky/OS_proj-2022-16bit" target="_blank" rel="noopener">github.com/danielLublinsky/OS_proj-2022-16bit</a>
+            <div class="project-chips">
+              <span class="chip">C</span><span class="chip">x86 Assembly</span>
+              <span class="chip">FAT16</span><span class="chip">Bootloader</span>
+            </div>
           </div>
         </div>
         <div class="project-card">
-          <div class="project-top">
-            <div class="project-name">FPV Drone Lab</div>
-            <span class="project-arrow" style="opacity:.5">
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
-            </span>
+          <div class="project-img">
+            <div class="project-img-placeholder">
+              <svg width="38" height="38" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+              Add a photo of your lab
+            </div>
           </div>
-          <p class="project-desc">Personal workshop for building, repairing, and tuning FPV quadcopters from scratch. Full-stack hardware work: frame assembly, soldering, flight-controller configuration in Betaflight, EdgeTX Lua scripting on the radio, ExpressLRS link setup, and iterative PID tuning in the field. With contributions to the Betaflight open-source project.</p>
-          <a class="project-link" href="https://github.com/betaflight/betaflight" target="_blank" rel="noopener">github.com/betaflight/betaflight</a>
-          <div class="project-chips">
-            <span class="chip"><img src="https://github.com/betaflight.png?size=24" alt="Betaflight">Betaflight</span>
-            <span class="chip"><img src="https://github.com/EdgeTX.png?size=24" alt="EdgeTX">EdgeTX</span>
-            <span class="chip"><img src="https://github.com/ExpressLRS.png?size=24" alt="ELRS">ELRS</span>
-            <span class="chip"><i class="devicon-lua-plain colored"></i>Lua</span>
-            <span class="chip"><i class="devicon-c-plain colored"></i>C</span>
-            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>PID Tuning</span>
-            <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Hardware</span>
+          <div class="project-body">
+            <div class="project-top">
+              <div class="project-name">FPV Drone Lab</div>
+              <span class="project-arrow" style="opacity:.5">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="5" y1="5" x2="19" y2="19"/><line x1="19" y1="5" x2="5" y2="19"/><circle cx="12" cy="12" r="2.5"/><circle cx="5" cy="5" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="5" cy="19" r="2"/><circle cx="19" cy="19" r="2"/></svg>
+              </span>
+            </div>
+            <p class="project-desc">Personal workshop for building, repairing, and tuning FPV quadcopters from scratch. Full-stack hardware work: frame assembly, soldering, flight-controller configuration in Betaflight, EdgeTX Lua scripting on the radio, ExpressLRS link setup, and iterative PID tuning in the field. With contributions to the Betaflight open-source project.</p>
+            <a class="project-link" href="https://github.com/betaflight/betaflight" target="_blank" rel="noopener">github.com/betaflight/betaflight</a>
+            <div class="project-chips">
+              <span class="chip"><img src="https://github.com/betaflight.png?size=24" alt="Betaflight">Betaflight</span>
+              <span class="chip"><img src="https://github.com/EdgeTX.png?size=24" alt="EdgeTX">EdgeTX</span>
+              <span class="chip"><img src="https://github.com/ExpressLRS.png?size=24" alt="ELRS">ELRS</span>
+              <span class="chip"><i class="devicon-lua-plain colored"></i>Lua</span>
+              <span class="chip"><i class="devicon-c-plain colored"></i>C</span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="4" y1="21" x2="4" y2="14"/><line x1="4" y1="10" x2="4" y2="3"/><line x1="12" y1="21" x2="12" y2="12"/><line x1="12" y1="8" x2="12" y2="3"/><line x1="20" y1="21" x2="20" y2="16"/><line x1="20" y1="12" x2="20" y2="3"/><line x1="1" y1="14" x2="7" y2="14"/><line x1="9" y1="8" x2="15" y2="8"/><line x1="17" y1="16" x2="23" y2="16"/></svg>PID Tuning</span>
+              <span class="chip"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>Hardware</span>
+            </div>
           </div>
         </div>
       </div>
