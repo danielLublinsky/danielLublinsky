@@ -428,6 +428,51 @@
     .gh-stat-card { opacity: 0; transition: transform .3s cubic-bezier(0.22,1,0.36,1), box-shadow .3s; }
     .gh-stat-card.appear { animation: fadeSlideUp .5s cubic-bezier(0.22,1,0.36,1) both; opacity: 1; }
 
+    /* ── SLIDESHOW ── */
+    .slideshow {
+      position: relative; border-radius: 12px; overflow: hidden;
+      height: 380px; background: #0d1117; user-select: none;
+    }
+    .slide {
+      position: absolute; inset: 0; opacity: 0;
+      transition: opacity .75s ease;
+    }
+    .slide.active { opacity: 1; }
+    .slide img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      transition: transform 6s ease;
+    }
+    .slide.active img { transform: scale(1.04); }
+    .slide-btn {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      background: rgba(0,0,0,.28); backdrop-filter: blur(6px);
+      border: 1px solid rgba(255,255,255,.18); border-radius: 50%;
+      width: 40px; height: 40px; color: #fff; font-size: 1.35rem;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      z-index: 10; transition: background .2s, transform .2s;
+      line-height: 1;
+    }
+    .slide-btn:hover { background: rgba(0,0,0,.55); transform: translateY(-50%) scale(1.1); }
+    .slide-prev { left: .9rem; }
+    .slide-next { right: .9rem; }
+    .slide-dots {
+      position: absolute; bottom: .85rem; left: 50%; transform: translateX(-50%);
+      display: flex; gap: .45rem; z-index: 10;
+    }
+    .slide-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: rgba(255,255,255,.35); cursor: pointer;
+      transition: background .25s, transform .25s;
+    }
+    .slide-dot.active { background: #fff; transform: scale(1.3); }
+    .slide-caption {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 2.5rem 1.2rem .9rem;
+      background: linear-gradient(to top, rgba(0,0,0,.55) 0%, transparent 100%);
+      color: rgba(255,255,255,.85); font-size: .75rem; letter-spacing: .05em;
+      pointer-events: none; z-index: 5;
+    }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
       #dunes, #spotlight { display: none; }
@@ -684,6 +729,7 @@
         <li><a href="#github">GitHub</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#background">Background</a></li>
+        <li><a href="#photos">Photos</a></li>
       </ul>
     </div>
     <div class="left-bottom">
@@ -884,6 +930,42 @@
       <div class="section-label animate">Background</div>
       <div class="bg-card animate">
         <p class="bg-text">Hello,<br>I am Software engineer living in Beersheva. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build solder and tune drones.</p>
+      </div>
+    </div>
+
+    <!-- PHOTOS -->
+    <div class="section" id="photos">
+      <div class="section-label animate">Life Outside Code</div>
+      <div class="slideshow animate">
+        <div class="slide active">
+          <img src="photo-ski.jpg" alt="Skiing in the mountains" loading="lazy">
+          <div class="slide-caption">Skiing in the Alps</div>
+        </div>
+        <div class="slide">
+          <img src="photo-fpv-flying.jpg" alt="Flying FPV with goggles" loading="lazy">
+          <div class="slide-caption">Out flying FPV</div>
+        </div>
+        <div class="slide">
+          <img src="photo-climbing.jpg" alt="Rock climbing" loading="lazy">
+          <div class="slide-caption">Rock climbing</div>
+        </div>
+        <div class="slide">
+          <img src="photo-bbq.jpg" alt="BBQ with friends" loading="lazy">
+          <div class="slide-caption">Good food with good people</div>
+        </div>
+        <div class="slide">
+          <img src="photo-fishing.jpg" alt="Fishing by the river" loading="lazy">
+          <div class="slide-caption">Fishing</div>
+        </div>
+        <button class="slide-btn slide-prev" aria-label="Previous">&#8249;</button>
+        <button class="slide-btn slide-next" aria-label="Next">&#8250;</button>
+        <div class="slide-dots">
+          <span class="slide-dot active"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+          <span class="slide-dot"></span>
+        </div>
       </div>
     </div>
 
@@ -1201,6 +1283,38 @@
       setTimeout(() => this.remove(), 700);
     });
   });
+
+  /* ── SLIDESHOW ── */
+  (function() {
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const dots   = Array.from(document.querySelectorAll('.slide-dot'));
+    let cur = 0, timer;
+
+    function go(n) {
+      slides[cur].classList.remove('active');
+      dots[cur].classList.remove('active');
+      cur = ((n % slides.length) + slides.length) % slides.length;
+      slides[cur].classList.add('active');
+      dots[cur].classList.add('active');
+      reset();
+    }
+
+    function reset() {
+      clearInterval(timer);
+      timer = setInterval(() => go(cur + 1), 5000);
+    }
+
+    document.querySelector('.slide-prev').addEventListener('click', () => go(cur - 1));
+    document.querySelector('.slide-next').addEventListener('click', () => go(cur + 1));
+    dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
+
+    /* pause on hover */
+    const show = document.querySelector('.slideshow');
+    show.addEventListener('mouseenter', () => clearInterval(timer));
+    show.addEventListener('mouseleave', reset);
+
+    reset();
+  })();
 
   /* ── DUNES / DRONES: show only at bottom of scroll ── */
   const dunesEl = document.getElementById('dunes');
