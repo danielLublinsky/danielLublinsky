@@ -255,8 +255,12 @@
       font-size: .68rem; font-weight: 700; letter-spacing: .12em; color: var(--muted);
       text-transform: uppercase; margin: 1.4rem 0 .7rem;
     }
+    .lang-bar { display: flex; height: 8px; border-radius: 999px; overflow: hidden; margin-bottom: .7rem; }
+    .lang-seg { height: 100%; }
 
-
+    .lang-legend { display: flex; flex-wrap: wrap; gap: .5rem .9rem; margin-bottom: 1.4rem; }
+    .lang-item { display: flex; align-items: center; gap: .35rem; font-size: .75rem; color: var(--muted); }
+    .lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
 
     .gh-loading { font-size: .8rem; color: var(--muted); font-style: italic; }
 
@@ -412,6 +416,11 @@
     .animate-children.visible .skill-group:nth-child(3) .skill-group-name::after { animation: underlineGrow .5s ease .93s both; }
     .animate-children.visible .skill-group:nth-child(4) .skill-group-name::after { animation: underlineGrow .5s ease 1.07s both; }
     .animate-children.visible .skill-group:nth-child(5) .skill-group-name::after { animation: underlineGrow .5s ease 1.21s both; }
+
+    /* lang bar animated fill */
+    .lang-seg { transform-origin: left; animation: none; }
+    .lang-seg.fill { animation: langFill .9s cubic-bezier(0.22,1,0.36,1) both; }
+    @keyframes langFill { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 
     /* heatmap week stagger */
     .heatmap-week { opacity: 0; animation: none; }
@@ -960,7 +969,13 @@
   // Create one at: https://github.com/settings/tokens/new?scopes=read:user
   const GITHUB_TOKEN = '__GITHUBKEY__';
 
-const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
+  const LANG_COLORS = {
+    'C#':'#178600','Python':'#3572A5','JavaScript':'#f1e05a','TypeScript':'#2b7489',
+    'C':'#555555','C++':'#f34b7d','Rust':'#dea584','Assembly':'#6E4C13',
+    'CSS':'#563d7c','VBA':'#867db1','Shell':'#89e051',
+    'Vue':'#41b883','Go':'#00ADD8','Java':'#b07219','Swift':'#ffac45'
+  };
+  const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
 
   function fmt(n) { return typeof n === 'number' ? n.toLocaleString() : n; }
 
@@ -1024,7 +1039,7 @@ const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
                 }
                 repositories(ownerAffiliations: OWNER, first: 100) {
                   totalCount
-                  nodes { stargazerCount }
+                  nodes { stargazerCount primaryLanguage { name } }
                 }
                 followers { totalCount }
                 createdAt
@@ -1042,18 +1057,29 @@ const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
 
       const [repos, gql, commitSearch] = await Promise.all([reposP, gqlP, commitSearchP]);
 
-      /* Repo / star data — prefer GraphQL (includes private) over REST */
-      let repoCount, totalStars;
+      /* Repo / language / star data — prefer GraphQL (includes private) over REST */
+      let repoCount, totalStars, langCounts = {};
 
       if (gql && gql.data && gql.data.user) {
         const gqlRepos = gql.data.user.repositories.nodes;
         repoCount  = gql.data.user.repositories.totalCount;
         totalStars = gqlRepos.reduce((s,r) => s + r.stargazerCount, 0);
+        gqlRepos.forEach(r => {
+          if (r.primaryLanguage && r.primaryLanguage.name !== 'HTML')
+            langCounts[r.primaryLanguage.name] = (langCounts[r.primaryLanguage.name]||0) + 1;
+        });
       } else {
         const repoList = Array.isArray(repos) ? repos : [];
         repoCount  = repoList.length;
         totalStars = repoList.reduce((s,r) => s + r.stargazers_count, 0);
+        repoList.forEach(r => {
+          if (r.language && r.language !== 'HTML')
+            langCounts[r.language] = (langCounts[r.language]||0) + 1;
+        });
       }
+
+      const langTotal = Object.values(langCounts).reduce((a,b) => a+b, 0) || 1;
+      const topLangs  = Object.entries(langCounts).sort((a,b) => b[1]-a[1]).slice(0, 7);
 
       /* Contribution data */
       let totalContribs = '—', totalCommits = '—', totalIssues = '—', privateCount = 0;
@@ -1107,6 +1133,22 @@ const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
           ${heatmapHTML}
         ` : ''}
 
+        ${topLangs.length ? `
+        <div class="gh-sub-label" style="margin-top:${heatmapHTML?'1.4rem':'0'}">Languages</div>
+        <div class="lang-bar">
+          ${topLangs.map(([lang,count]) => `
+            <div class="lang-seg" style="flex:${count};background:${LANG_COLORS[lang]||'#ccc'}"
+              title="${lang}: ${Math.round(count/langTotal*100)}%"></div>`).join('')}
+        </div>
+        <div class="lang-legend">
+          ${topLangs.map(([lang,count]) => `
+            <span class="lang-item">
+              <span class="lang-dot" style="background:${LANG_COLORS[lang]||'#ccc'}"></span>
+              ${lang}&nbsp;<span style="opacity:.55">${Math.round(count/langTotal*100)}%</span>
+            </span>`).join('')}
+        </div>
+        ` : ''}
+
         <div class="gh-sub-label" style="margin-top:1.3rem">On GitHub since</div>
         <p style="font-size:.82rem;color:var(--muted)">${joinYear} — ${yearsOnGH} year${yearsOnGH!==1?'s':''} ago</p>
       `;
@@ -1120,6 +1162,9 @@ const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
         el.querySelectorAll('.gh-stat-num').forEach((numEl, i) => {
           const target = stats[i].num;
           if (typeof target === 'number') setTimeout(() => animateCounter(numEl, target, 1400), i * 180);
+        });
+        el.querySelectorAll('.lang-seg').forEach((seg, i) => {
+          setTimeout(() => seg.classList.add('fill'), 300 + i * 60);
         });
         el.querySelectorAll('.heatmap-week').forEach((week, i) => {
           setTimeout(() => week.classList.add('appear'), i * 12);
