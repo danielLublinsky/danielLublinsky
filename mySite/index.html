@@ -266,10 +266,10 @@
 
     /* ── HEATMAP ── */
     .heatmap-wrap { overflow-x: auto; padding-bottom: .3rem; }
-    .heatmap-months { display: flex; padding-left: 1px; margin-bottom: 4px; }
-    .heatmap-months span { font-size: .62rem; color: var(--muted); flex: 1; min-width: 0; }
+    .heatmap-months { position: relative; height: 13px; margin-bottom: 4px; }
+    .heatmap-months span { position: absolute; top: 0; font-size: .62rem; color: var(--muted); white-space: nowrap; }
     .heatmap { display: flex; gap: 3px; }
-    .heatmap-week { display: flex; flex-direction: column; gap: 3px; }
+    .heatmap-week { display: flex; flex-direction: column; gap: 3px; flex-shrink: 0; }
     .heatmap-day {
       width: 11px; height: 11px; border-radius: 2px; flex-shrink: 0;
       transition: transform .1s;
@@ -990,8 +990,29 @@
     })(t0);
   }
 
-  function buildHeatmap(weeks, months) {
-    const monthLabels = months.map(m => `<span style="flex:${m.totalWeeks}">${m.name.slice(0,3)}</span>`).join('');
+  const MONTH_NAMES = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+
+  function buildHeatmap(weeks) {
+    // one column = 11px cell + 3px gap; labels are anchored to the week they start in
+    const COL = 14;
+    const gridWidth = weeks.length * COL - 3;
+
+    const starts = [];
+    let prevMonth = -1;
+    weeks.forEach((w, i) => {
+      const first = w.contributionDays[0];
+      if (!first) return;
+      const month = new Date(first.date + 'T00:00:00').getMonth();
+      if (month !== prevMonth) { starts.push({ week: i, month }); prevMonth = month; }
+    });
+
+    const monthLabels = starts.map((s, i) => {
+      // skip a month too narrow to label without colliding with the next one
+      const span = ((i + 1 < starts.length) ? starts[i + 1].week : weeks.length) - s.week;
+      if (span < 3) return '';
+      return `<span style="left:${s.week * COL}px">${MONTH_NAMES[s.month]}</span>`;
+    }).join('');
+
     const grid = weeks.map(w =>
       `<div class="heatmap-week">${
         w.contributionDays.map(d =>
@@ -1002,8 +1023,8 @@
     ).join('');
     return `
       <div class="heatmap-wrap">
-        <div class="heatmap-months">${monthLabels}</div>
-        <div class="heatmap">${grid}</div>
+        <div class="heatmap-months" style="width:${gridWidth}px">${monthLabels}</div>
+        <div class="heatmap" style="width:${gridWidth}px">${grid}</div>
         <div class="heatmap-legend">
           <span>Less</span>
           ${['#ebedf0','#9be9a8','#40c463','#30a14e','#216e39'].map(c =>
@@ -1034,7 +1055,6 @@
                   restrictedContributionsCount
                   contributionCalendar {
                     totalContributions
-                    months { name firstDay totalWeeks }
                     weeks { contributionDays { contributionCount date color } }
                   }
                 }
@@ -1097,7 +1117,7 @@
         privateCount  = cc.restrictedContributionsCount;
         hasPrivate    = privateCount > 0;
         joinYear      = new Date(u.createdAt).getFullYear();
-        heatmapHTML   = buildHeatmap(cal.weeks, cal.months);
+        heatmapHTML   = buildHeatmap(cal.weeks);
       } else if (commitSearch) {
         totalCommits = commitSearch.total_count != null ? commitSearch.total_count + 500 : '—';
       }
