@@ -279,11 +279,6 @@
     .heatmap-day:hover { transform: scale(1.4); }
     .heatmap-legend { display: flex; align-items: center; gap: 3px; margin-top: .6rem; justify-content: flex-end; }
     .heatmap-legend span { font-size: .68rem; color: var(--muted); }
-    .private-badge {
-      font-size: .65rem; background: #d1fae5; color: #047857;
-      border: 1px solid #a7f3d0; border-radius: 3px;
-      padding: .1rem .45rem; margin-left: .5rem; vertical-align: middle;
-    }
 
     /* ── PROJECT CARD ── */
     .project-card {
@@ -430,7 +425,9 @@
 
     /* stat card entrance stagger */
     .gh-stat-card { opacity: 0; transition: transform .3s cubic-bezier(0.22,1,0.36,1), box-shadow .3s; }
-    .gh-stat-card.appear { animation: fadeSlideUp .5s cubic-bezier(0.22,1,0.36,1) both; opacity: 1; }
+    /* fill-mode backwards (not both): once the entrance ends, the animation releases
+       the transform so the :hover lift can apply; opacity is held by this rule */
+    .gh-stat-card.appear { animation: fadeSlideUp .5s cubic-bezier(0.22,1,0.36,1) backwards; opacity: 1; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 720px) {
@@ -970,16 +967,15 @@
     });
   });
 
-  /* ── GITHUB STATS ── */
-
-  // Add your GitHub Personal Access Token (read:user scope) for private contribution data + heatmap
-  // Create one at: https://github.com/settings/tokens/new?scopes=read:user
-  const GITHUB_TOKEN = '__GITHUBKEY__';
+  /* ── GITHUB STATS ──
+     stats.json is generated at deploy time by .github/scripts/build-stats.mjs,
+     so private+public data is included and no token ever ships to the browser. */
 
   const LANG_COLORS = {
     'C#':'#178600','Python':'#3572A5','JavaScript':'#f1e05a','TypeScript':'#2b7489',
     'C':'#555555','C++':'#f34b7d','Rust':'#dea584','Assembly':'#6E4C13',
-    'CSS':'#563d7c','VBA':'#867db1','Shell':'#89e051',
+    'CSS':'#563d7c','VBA':'#867db1','Shell':'#89e051','Lua':'#000080',
+    'Visual Basic .NET':'#945db7','TSQL':'#e38c00',
     'Vue':'#41b883','Go':'#00ADD8','Java':'#b07219','Swift':'#ffac45'
   };
   const STAT_COLORS = ['var(--blue)','#7c3aed','var(--green)','var(--amber)'];
@@ -1043,141 +1039,58 @@
   async function loadGH() {
     const el = document.getElementById('gh-content');
     try {
-      /* Always fetch repos via REST (public, no token needed) */
-      const reposP = fetch('https://api.github.com/users/danielLublinsky/repos?per_page=100').then(r => r.json());
-
-      /* GraphQL — requires token; gives private contributions + heatmap */
-      const gqlHeaders = { 'Content-Type': 'application/json' };
-      if (GITHUB_TOKEN) gqlHeaders['Authorization'] = `bearer ${GITHUB_TOKEN}`;
-
-      const gqlP = GITHUB_TOKEN
-        ? fetch('https://api.github.com/graphql', {
-            method: 'POST', headers: gqlHeaders,
-            body: JSON.stringify({ query: `{
-              user(login:"danielLublinsky") {
-                contributionsCollection {
-                  totalCommitContributions
-                  totalIssueContributions
-                  restrictedContributionsCount
-                  contributionCalendar {
-                    totalContributions
-                    weeks { contributionDays { contributionCount date color } }
-                  }
-                }
-                repositories(ownerAffiliations: OWNER, first: 100) {
-                  totalCount
-                  nodes { stargazerCount primaryLanguage { name } }
-                }
-                followers { totalCount }
-                createdAt
-              }
-            }` })
-          }).then(r => r.json()).catch(() => null)
-        : Promise.resolve(null);
-
-      /* Fallback commit count via search (public only, no token) */
-      const commitSearchP = !GITHUB_TOKEN
-        ? fetch('https://api.github.com/search/commits?q=author:danielLublinsky&per_page=1', {
-            headers: { 'Accept': 'application/vnd.github.cloak-preview' }
-          }).then(r => r.json()).catch(() => null)
-        : Promise.resolve(null);
-
-      const [repos, gql, commitSearch] = await Promise.all([reposP, gqlP, commitSearchP]);
-
-      /* Repo / language / star data — prefer GraphQL (includes private) over REST */
-      let repoCount, totalStars, langCounts = {};
-
-      if (gql && gql.data && gql.data.user) {
-        const gqlRepos = gql.data.user.repositories.nodes;
-        repoCount  = gql.data.user.repositories.totalCount;
-        totalStars = gqlRepos.reduce((s,r) => s + r.stargazerCount, 0);
-        gqlRepos.forEach(r => {
-          if (r.primaryLanguage && r.primaryLanguage.name !== 'HTML')
-            langCounts[r.primaryLanguage.name] = (langCounts[r.primaryLanguage.name]||0) + 1;
-        });
-      } else {
-        const repoList = Array.isArray(repos) ? repos : [];
-        repoCount  = repoList.length;
-        totalStars = repoList.reduce((s,r) => s + r.stargazers_count, 0);
-        repoList.forEach(r => {
-          if (r.language && r.language !== 'HTML')
-            langCounts[r.language] = (langCounts[r.language]||0) + 1;
-        });
-      }
-
-      const langTotal = Object.values(langCounts).reduce((a,b) => a+b, 0) || 1;
-      const topLangs  = Object.entries(langCounts).sort((a,b) => b[1]-a[1]).slice(0, 7);
-
-      /* Contribution data */
-      let totalContribs = '—', totalCommits = '—', totalIssues = '—', privateCount = 0;
-      let heatmapHTML = '', hasPrivate = false;
-      let joinYear = '—';
-
-      if (gql && gql.data && gql.data.user) {
-        const u  = gql.data.user;
-        const cc = u.contributionsCollection;
-        const cal = cc.contributionCalendar;
-        totalContribs = cal.totalContributions;
-        totalCommits  = cc.totalCommitContributions + cc.restrictedContributionsCount + 500;
-        totalIssues   = cc.totalIssueContributions + 60;
-        privateCount  = cc.restrictedContributionsCount;
-        hasPrivate    = privateCount > 0;
-        joinYear      = new Date(u.createdAt).getFullYear();
-        heatmapHTML   = buildHeatmap(cal.weeks);
-      } else if (commitSearch) {
-        totalCommits = commitSearch.total_count != null ? commitSearch.total_count + 500 : '—';
-      }
-
-      /* Fallback user info if no GraphQL */
-      if (joinYear === '—') {
-        const u = await fetch('https://api.github.com/users/danielLublinsky').then(r=>r.json()).catch(()=>({}));
-        joinYear = u.created_at ? new Date(u.created_at).getFullYear() : '—';
-      }
-
-      const yearsOnGH = typeof joinYear === 'number' ? new Date().getFullYear() - joinYear : '—';
+      const s = await fetch('stats.json').then(r => {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      });
 
       const stats = [
-        { num: repoCount,    label: hasPrivate ? 'Repos (incl. private)' : 'Repos' },
-        { num: totalCommits, label: hasPrivate ? 'Commits (incl. private)' : 'Commits' },
-        { num: totalStars,   label: hasPrivate ? 'Stars (incl. private)' : 'Stars' },
-        { num: totalIssues,  label: 'Issues Opened' },
+        { num: s.repos.total,             label: 'Repos' },
+        { num: s.commits,                 label: 'Commits (all time)' },
+        { num: s.stars,                   label: 'Stars' },
+        { num: s.issues + s.pullRequests, label: 'Issues & PRs (all time)' },
       ];
+
+      const joinDate = new Date(s.joinDate);
+      const joinYear = joinDate.getFullYear();
+      const yearsOnGH = Math.floor((Date.now() - joinDate) / 31557600000);
+
+      const heatmapHTML = s.calendar && s.calendar.weeks.length ? buildHeatmap(s.calendar.weeks) : '';
 
       el.innerHTML = `
         <div class="gh-stats-row">
-          ${stats.map((s,i) => `
+          ${stats.map((st,i) => `
             <div class="gh-stat-card">
-              <div class="gh-stat-num" style="color:${STAT_COLORS[i]}">${typeof s.num === 'number' ? '0' : fmt(s.num)}</div>
-              <div class="gh-stat-label">${s.label}</div>
+              <div class="gh-stat-num" style="color:${STAT_COLORS[i]}">0</div>
+              <div class="gh-stat-label">${st.label}</div>
             </div>`).join('')}
         </div>
 
         ${heatmapHTML ? `
           <div class="gh-sub-label">
-            Contributions — ${fmt(totalContribs)} this year
-            ${hasPrivate ? `<span class="private-badge">+ ${fmt(privateCount)} private</span>` : ''}
+            Contributions — ${fmt(s.calendar.total)} in the last 12 months
           </div>
           ${heatmapHTML}
         ` : ''}
 
-        ${topLangs.length ? `
-        <div class="gh-sub-label" style="margin-top:${heatmapHTML?'1.4rem':'0'}">Languages</div>
+        ${s.languages.length ? `
+        <div class="gh-sub-label" style="margin-top:${heatmapHTML?'1.4rem':'0'}">Languages — by code size</div>
         <div class="lang-bar">
-          ${topLangs.map(([lang,count]) => `
-            <div class="lang-seg" style="flex:${count};background:${LANG_COLORS[lang]||'#ccc'}"
-              title="${lang}: ${Math.round(count/langTotal*100)}%"></div>`).join('')}
+          ${s.languages.map(l => `
+            <div class="lang-seg" style="flex:${l.bytes};background:${LANG_COLORS[l.name]||'#ccc'}"
+              title="${l.name}: ${l.pct}%"></div>`).join('')}
         </div>
         <div class="lang-legend">
-          ${topLangs.map(([lang,count]) => `
+          ${s.languages.map(l => `
             <span class="lang-item">
-              <span class="lang-dot" style="background:${LANG_COLORS[lang]||'#ccc'}"></span>
-              ${lang}&nbsp;<span style="opacity:.55">${Math.round(count/langTotal*100)}%</span>
+              <span class="lang-dot" style="background:${LANG_COLORS[l.name]||'#ccc'}"></span>
+              ${l.name}&nbsp;<span style="opacity:.55">${l.pct}%</span>
             </span>`).join('')}
         </div>
         ` : ''}
 
         <div class="gh-sub-label" style="margin-top:1.3rem">On GitHub since</div>
-        <p style="font-size:.82rem;color:var(--muted)">${joinYear} — ${yearsOnGH} year${yearsOnGH!==1?'s':''} ago</p>
+        <p style="font-size:.82rem;color:var(--muted)">${joinYear} — ${yearsOnGH} year${yearsOnGH!==1?'s':''} on GitHub</p>
       `;
       el.classList.add('visible');
 
@@ -1187,8 +1100,7 @@
           setTimeout(() => card.classList.add('appear'), i * 120);
         });
         el.querySelectorAll('.gh-stat-num').forEach((numEl, i) => {
-          const target = stats[i].num;
-          if (typeof target === 'number') setTimeout(() => animateCounter(numEl, target, 1400), i * 180);
+          setTimeout(() => animateCounter(numEl, stats[i].num, 1400), i * 180);
         });
         el.querySelectorAll('.lang-seg').forEach((seg, i) => {
           setTimeout(() => seg.classList.add('fill'), 300 + i * 60);

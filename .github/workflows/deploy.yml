@@ -3,6 +3,9 @@ name: Deploy
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '17 3 * * *' # daily refresh so GitHub stats stay current
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -18,8 +21,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Inject GitHub token
-        run: sed -i "s/__GITHUBKEY__/${{ secrets.GITHUBKEY }}/" mySite/index.html
+      - name: Build GitHub stats (token stays in CI)
+        run: node .github/scripts/build-stats.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUBKEY }}
 
       - uses: actions/configure-pages@v5
 
