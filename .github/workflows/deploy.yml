@@ -12,6 +12,11 @@ permissions:
   pages: write
   id-token: write
 
+# One Pages deployment at a time; queued runs wait instead of racing the lock
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
