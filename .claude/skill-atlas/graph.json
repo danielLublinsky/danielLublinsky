@@ -1,0 +1,1915 @@
+{
+  "edges": [
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/github-and-merge.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/transcribe.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/extraction-spec.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/exports.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/update.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/query.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/add-watch.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "graphify",
+      "target": "file:/home/danson/.claude/skills/graphify/references/hooks.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "prompt-master",
+      "target": "file:/home/danson/.claude/skills/prompt-master/references/templates.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "prompt-master",
+      "target": "file:/home/danson/.claude/skills/prompt-master/references/patterns.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "superpowers:brainstorming",
+      "target": "frontend-design:frontend-design"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:brainstorming",
+      "target": "superpowers:writing-plans"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:executing-plans",
+      "target": "superpowers:using-superpowers"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:executing-plans",
+      "target": "superpowers:finishing-a-development-branch"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:executing-plans",
+      "target": "superpowers:subagent-driven-development"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:executing-plans",
+      "target": "superpowers:using-git-worktrees"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:requesting-code-review",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/requesting-code-review/code-reviewer.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/implementer-prompt.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/task-reviewer-prompt.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/re-review-prompt.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/../requesting-code-review/code-reviewer.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/sdd-workspace"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/task-brief"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:subagent-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/review-package"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:subagent-driven-development",
+      "target": "superpowers:finishing-a-development-branch"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:subagent-driven-development",
+      "target": "superpowers:requesting-code-review"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:subagent-driven-development",
+      "target": "superpowers:using-git-worktrees"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:systematic-debugging",
+      "target": "superpowers:test-driven-development"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:systematic-debugging",
+      "target": "superpowers:verification-before-completion"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:test-driven-development",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/test-driven-development/writing-good-tests.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:using-superpowers",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/codex-tools.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:using-superpowers",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/pi-tools.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:using-superpowers",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/antigravity-tools.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "superpowers:using-superpowers",
+      "target": "frontend-design:frontend-design"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:using-superpowers",
+      "target": "superpowers:systematic-debugging"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-plans",
+      "target": "superpowers:using-git-worktrees"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-plans",
+      "target": "superpowers:executing-plans"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-plans",
+      "target": "superpowers:subagent-driven-development"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:writing-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/../using-superpowers/references/codex-tools.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:writing-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/../using-superpowers/references/gemini-tools.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "superpowers:writing-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/testing-skills-with-subagents.md"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-skills",
+      "target": "superpowers:using-superpowers"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-skills",
+      "target": "superpowers:verification-before-completion"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-skills",
+      "target": "superpowers:test-driven-development"
+    },
+    {
+      "kind": "dangling",
+      "reason": "disabled",
+      "source": "superpowers:writing-skills",
+      "target": "superpowers:systematic-debugging"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "claude-code-setup:claude-automation-recommender",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/mcp-servers.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "claude-code-setup:claude-automation-recommender",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/skills-reference.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "claude-code-setup:claude-automation-recommender",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/hooks-patterns.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "claude-code-setup:claude-automation-recommender",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/subagent-templates.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "claude-code-setup:claude-automation-recommender",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/plugins-reference.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "claude-code-setup:claude-automation-recommender",
+      "target": "frontend-design:frontend-design"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/ask-matt/PHASE-BOUNDARIES.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:grill-with-docs"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:resolving-merge-conflicts"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:diagnosing-bugs"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:improve-codebase-architecture"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:codebase-design"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:code-review"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:to-questionnaire"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:setup-matt-pocock-skills"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:to-tickets"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:domain-modeling"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:writing-for-agents"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:wait-what"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:to-spec"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:ask-matt",
+      "target": "mattpocock-skills:grill-me"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:diagnosing-bugs",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:diagnosing-bugs",
+      "target": "mattpocock-skills:improve-codebase-architecture"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:grill-with-docs",
+      "target": "mattpocock-skills:domain-modeling"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:triage",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/AGENT-BRIEF.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:triage",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/OUT-OF-SCOPE.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:triage",
+      "target": "mattpocock-skills:setup-matt-pocock-skills"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:triage",
+      "target": "mattpocock-skills:domain-modeling"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:improve-codebase-architecture",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/improve-codebase-architecture/HTML-REPORT.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:improve-codebase-architecture",
+      "target": "mattpocock-skills:codebase-design"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:improve-codebase-architecture",
+      "target": "mattpocock-skills:domain-modeling"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/triage-labels.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/domain.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "mattpocock-skills:triage"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "mattpocock-skills:to-tickets"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:setup-matt-pocock-skills",
+      "target": "mattpocock-skills:to-spec"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:tdd",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/tests.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:tdd",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/mocking.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:tdd",
+      "target": "mattpocock-skills:code-review"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:tdd",
+      "target": "mattpocock-skills:codebase-design"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:to-spec",
+      "target": "mattpocock-skills:setup-matt-pocock-skills"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:to-tickets",
+      "target": "mattpocock-skills:setup-matt-pocock-skills"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:wayfinder",
+      "target": "mattpocock-skills:research"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:wayfinder",
+      "target": "mattpocock-skills:prototype"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:wayfinder",
+      "target": "mattpocock-skills:grilling"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:wayfinder",
+      "target": "mattpocock-skills:setup-matt-pocock-skills"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:wayfinder",
+      "target": "mattpocock-skills:domain-modeling"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:implement",
+      "target": "mattpocock-skills:code-review"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:prototype",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/LOGIC.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:prototype",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/UI.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:domain-modeling",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/CONTEXT-FORMAT.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:domain-modeling",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/ADR-FORMAT.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:codebase-design",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/DEEPENING.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:codebase-design",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/DESIGN-IT-TWICE.md"
+    },
+    {
+      "kind": "mentions",
+      "source": "mattpocock-skills:code-review",
+      "target": "mattpocock-skills:setup-matt-pocock-skills"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:wizard",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/wizard/template.sh"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:teach",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/MISSION-FORMAT.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:teach",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/RESOURCES-FORMAT.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:teach",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/LEARNING-RECORD-FORMAT.md"
+    },
+    {
+      "broken": false,
+      "kind": "references",
+      "source": "mattpocock-skills:writing-for-agents",
+      "target": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/writing-for-agents/SKILL-MECHANICS.md"
+    }
+  ],
+  "generated_at": "2026-08-06T12:22:45Z",
+  "nodes": [
+    {
+      "bytes": 40495,
+      "description": "Use for any question about a codebase, its architecture, file relationships, or project content \u2014 especially when graphify-out/ exists, where the question should be treated as a graphify query first. Turns any input (code, docs, papers, images, videos) into a persistent knowledge graph with god nodes, community detection, and query/path/explain tools.",
+      "enabled": true,
+      "id": "graphify",
+      "marketplace": null,
+      "mtime": "2026-07-29T09:10:11Z",
+      "name": "graphify",
+      "path": "/home/danson/.claude/skills/graphify/SKILL.md",
+      "plugin": null,
+      "registered": true,
+      "scope": "user",
+      "type": "skill",
+      "version": null
+    },
+    {
+      "bytes": 14908,
+      "description": "REQUIRED for end-user customization of Linux desktop, window manager, or system config. Use when editing ~/.config/hypr/, ~/.config/waybar/, ~/.config/walker/, ~/.config/alacritty/, ~/.config/foot/, ~/.config/kitty/, ~/.config/ghostty/, ~/.config/mako/, or ~/.config/omarchy/. Triggers: Hyprland, window rules, animations, keybindings, monitors, gaps, borders, blur, opacity, waybar, walker, terminal config, themes, wallpaper, night light, idle, lock screen, screenshots, reminders, layer rules, workspace settings, display config, and user-facing omarchy commands. Excludes Omarchy source development in ~/.local/share/omarchy/ and `omarchy dev` workflows.",
+      "enabled": true,
+      "id": "omarchy",
+      "marketplace": null,
+      "mtime": "2026-05-15T19:45:34Z",
+      "name": "omarchy",
+      "path": "/home/danson/.claude/skills/omarchy/SKILL.md",
+      "plugin": null,
+      "registered": true,
+      "scope": "user",
+      "type": "skill",
+      "version": null
+    },
+    {
+      "bytes": 27165,
+      "description": "Generates optimized prompts for AI tools. Activates only when the user explicitly asks to write, fix, improve, or adapt a prompt for a specific AI tool (LLM, Cursor, Midjourney, image AI, video AI, coding agents, etc.). Does not activate for general conversation, coding tasks, document writing, or other non-prompt-engineering work.",
+      "enabled": true,
+      "id": "prompt-master",
+      "marketplace": null,
+      "mtime": "2026-06-26T15:13:31Z",
+      "name": "prompt-master",
+      "path": "/home/danson/.claude/skills/prompt-master/SKILL.md",
+      "plugin": null,
+      "registered": true,
+      "scope": "user",
+      "type": "skill",
+      "version": null
+    },
+    {
+      "bytes": 8260,
+      "description": "Guidance for distinctive, intentional visual design when building new UI or reshaping an existing one. Helps with aesthetic direction, typography, and making choices that don't read as templated defaults.",
+      "enabled": true,
+      "id": "frontend-design:frontend-design",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-23T10:45:27Z",
+      "name": "frontend-design",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/frontend-design/unknown/skills/frontend-design/SKILL.md",
+      "plugin": "frontend-design",
+      "plugin_key": "frontend-design@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "unknown"
+    },
+    {
+      "bytes": 10047,
+      "description": "You MUST use this before any creative work - creating features, building components, adding functionality, or modifying behavior. Explores user intent, requirements and design before implementation.",
+      "enabled": false,
+      "id": "superpowers:brainstorming",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "brainstorming",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/brainstorming/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 6078,
+      "description": "Use when facing 2+ independent tasks that can be worked on without shared state or sequential dependencies",
+      "enabled": false,
+      "id": "superpowers:dispatching-parallel-agents",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "dispatching-parallel-agents",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/dispatching-parallel-agents/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 2305,
+      "description": "Use when you have a written implementation plan to execute in a separate session with review checkpoints",
+      "enabled": false,
+      "id": "superpowers:executing-plans",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "executing-plans",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/executing-plans/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 7022,
+      "description": "Use when implementation is complete, all tests pass, and you need to decide how to integrate the work",
+      "enabled": false,
+      "id": "superpowers:finishing-a-development-branch",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "finishing-a-development-branch",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/finishing-a-development-branch/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 6203,
+      "description": "Use when receiving code review feedback, before implementing suggestions, especially if feedback seems unclear or technically questionable - requires technical rigor and verification, not performative agreement or blind implementation",
+      "enabled": false,
+      "id": "superpowers:receiving-code-review",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "receiving-code-review",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/receiving-code-review/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 2956,
+      "description": "Use when completing tasks, implementing major features, or before merging to verify work meets requirements",
+      "enabled": false,
+      "id": "superpowers:requesting-code-review",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "requesting-code-review",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/requesting-code-review/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 28077,
+      "description": "Use when executing implementation plans with independent tasks in the current session",
+      "enabled": false,
+      "id": "superpowers:subagent-driven-development",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "subagent-driven-development",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 9465,
+      "description": "Use when encountering any bug, test failure, or unexpected behavior, before proposing fixes",
+      "enabled": false,
+      "id": "superpowers:systematic-debugging",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "systematic-debugging",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/systematic-debugging/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 9015,
+      "description": "Use when implementing any feature or bugfix, before writing implementation code",
+      "enabled": false,
+      "id": "superpowers:test-driven-development",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "test-driven-development",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/test-driven-development/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 6813,
+      "description": "Use when starting feature work that needs isolation from current workspace or before executing implementation plans - ensures an isolated workspace exists via native tools or git worktree fallback",
+      "enabled": false,
+      "id": "superpowers:using-git-worktrees",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "using-git-worktrees",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-git-worktrees/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 3063,
+      "description": "Use when starting any conversation - establishes how to find and use skills, requiring skill invocation before ANY response including clarifying questions",
+      "enabled": false,
+      "id": "superpowers:using-superpowers",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "using-superpowers",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 3646,
+      "description": "Use when about to claim work is complete, fixed, or passing, before committing or creating PRs - requires running verification commands and confirming output before making any success claims; evidence before assertions always",
+      "enabled": false,
+      "id": "superpowers:verification-before-completion",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "verification-before-completion",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/verification-before-completion/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 6907,
+      "description": "Use when you have a spec or requirements for a multi-step task, before touching code",
+      "enabled": false,
+      "id": "superpowers:writing-plans",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "writing-plans",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-plans/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 26360,
+      "description": "Use when creating new skills, editing existing skills, or verifying skills work before deployment",
+      "enabled": false,
+      "id": "superpowers:writing-skills",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-07-24T17:18:22Z",
+      "name": "writing-skills",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/SKILL.md",
+      "plugin": "superpowers",
+      "plugin_key": "superpowers@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "6.2.0"
+    },
+    {
+      "bytes": 10995,
+      "description": "Analyze a codebase and recommend Claude Code automations (hooks, subagents, skills, plugins, MCP servers). Use when user asks for automation recommendations, wants to optimize their Claude Code setup, mentions improving Claude Code workflows, asks how to first set up Claude Code for a project, or wants to know what Claude Code features they should use.",
+      "enabled": true,
+      "id": "claude-code-setup:claude-automation-recommender",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-06-05T19:36:03Z",
+      "name": "claude-automation-recommender",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/SKILL.md",
+      "plugin": "claude-code-setup",
+      "plugin_key": "claude-code-setup@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.0.0"
+    },
+    {
+      "bytes": 11491,
+      "description": "Ask which skill or flow fits your situation. A router over the skills in this repo.",
+      "enabled": true,
+      "id": "mattpocock-skills:ask-matt",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "ask-matt",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/ask-matt/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 8536,
+      "description": "Diagnosis loop for hard bugs and performance regressions. Use when the user says \"diagnose\"/\"debug this\", or reports something broken/throwing/failing/slow.",
+      "enabled": true,
+      "id": "mattpocock-skills:diagnosing-bugs",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "diagnosing-bugs",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/diagnosing-bugs/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 245,
+      "description": "A relentless interview to sharpen a plan or design, which also creates docs (ADR's and glossary) as we go.",
+      "enabled": true,
+      "id": "mattpocock-skills:grill-with-docs",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "grill-with-docs",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/grill-with-docs/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 6582,
+      "description": "Move issues and external PRs through a state machine of triage roles \u2014 categorise, verify, grill if needed, and write agent-ready briefs.",
+      "enabled": true,
+      "id": "mattpocock-skills:triage",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "triage",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 6039,
+      "description": "Scan a codebase for deepening opportunities, present them as a visual HTML report, then grill through whichever one you pick.",
+      "enabled": true,
+      "id": "mattpocock-skills:improve-codebase-architecture",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "improve-codebase-architecture",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/improve-codebase-architecture/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 6922,
+      "description": "Configure this repo for the engineering skills \u2014 set up its issue tracker, triage label vocabulary, and domain doc layout. Run once before first use of the other engineering skills.",
+      "enabled": true,
+      "id": "mattpocock-skills:setup-matt-pocock-skills",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "setup-matt-pocock-skills",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 3568,
+      "description": "Test-driven development. Use when the user wants to build features or fix bugs test-first, mentions \"red-green-refactor\", or wants integration tests.",
+      "enabled": true,
+      "id": "mattpocock-skills:tdd",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "tdd",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 3035,
+      "description": "Turn the current conversation into a spec and publish it to the project issue tracker \u2014 no interview, just synthesis of what you've already discussed.",
+      "enabled": true,
+      "id": "mattpocock-skills:to-spec",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "to-spec",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/to-spec/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 5707,
+      "description": "Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker \u2014 edges as text in one file per ticket locally, or native blocking links on a real tracker.",
+      "enabled": true,
+      "id": "mattpocock-skills:to-tickets",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "to-tickets",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/to-tickets/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 11887,
+      "description": "Plan a huge chunk of work \u2014 more than one agent session can hold \u2014 as a shared map of decision tickets on your issue tracker, and resolve them one at a time until the way to the destination is clear.",
+      "enabled": true,
+      "id": "mattpocock-skills:wayfinder",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "wayfinder",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/wayfinder/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 433,
+      "description": "Implement a piece of work based on a spec or set of tickets.",
+      "enabled": true,
+      "id": "mattpocock-skills:implement",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "implement",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/implement/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 2954,
+      "description": "Build a throwaway prototype to answer a design question. Use when the user wants to sanity-check whether a state model or logic feels right, or explore what a UI should look like.",
+      "enabled": true,
+      "id": "mattpocock-skills:prototype",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "prototype",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 799,
+      "description": "Investigate a question against high-trust primary sources and capture the findings as a Markdown file in the repo. Use when the user wants a topic researched, docs or API facts gathered, or reading legwork delegated to a background agent.",
+      "enabled": true,
+      "id": "mattpocock-skills:research",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "research",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/research/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 3427,
+      "description": "Build and sharpen a project's domain model. Use when the user wants to pin down domain terminology or a ubiquitous language, record an architectural decision, or when another skill needs to maintain the domain model.",
+      "enabled": true,
+      "id": "mattpocock-skills:domain-modeling",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "domain-modeling",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 6488,
+      "description": "Shared vocabulary for designing deep modules. Use when the user wants to design or improve a module's interface, find deepening opportunities, decide where a seam goes, make code more testable or AI-navigable, or when another skill needs the deep-module vocabulary.",
+      "enabled": true,
+      "id": "mattpocock-skills:codebase-design",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "codebase-design",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 6731,
+      "description": "Review the changes since a fixed point (commit, branch, tag, or merge-base) along two axes \u2014 Standards (does the code follow this repo's documented coding standards?) and Spec (does the code match what the originating issue/spec asked for?). Runs both reviews in parallel sub-agents and reports them side by side. Use when the user wants to review a branch, a PR, work-in-progress changes, or asks to \"review since X\".",
+      "enabled": true,
+      "id": "mattpocock-skills:code-review",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "code-review",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/code-review/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 921,
+      "description": "Use when you need to resolve an in-progress git merge/rebase conflict.",
+      "enabled": true,
+      "id": "mattpocock-skills:resolving-merge-conflicts",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "resolving-merge-conflicts",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/resolving-merge-conflicts/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 4207,
+      "description": "Generate an interactive bash wizard that walks a human through steps only they can perform. Use when provisioning infrastructure, setting up credentials or CI secrets, walking an unfamiliar third-party dashboard, or running a one-off migration or cutover. Don't invoke this for steps the agent can perform itself.",
+      "enabled": true,
+      "id": "mattpocock-skills:wizard",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "wizard",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/wizard/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 147,
+      "description": "A relentless interview to sharpen a plan or design.",
+      "enabled": true,
+      "id": "mattpocock-skills:grill-me",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "grill-me",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/grill-me/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 1872,
+      "description": "Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.",
+      "enabled": true,
+      "id": "mattpocock-skills:grilling",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "grilling",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/grilling/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 879,
+      "description": "Compact the current conversation into a handoff document for another agent to pick up.",
+      "enabled": true,
+      "id": "mattpocock-skills:handoff",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "handoff",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/handoff/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 9507,
+      "description": "Teach the user a new skill or concept, within this workspace.",
+      "enabled": true,
+      "id": "mattpocock-skills:teach",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "teach",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 2921,
+      "description": "Turn a decision you can't fully answer into a questionnaire for someone else to fill in.",
+      "enabled": true,
+      "id": "mattpocock-skills:to-questionnaire",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "to-questionnaire",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/to-questionnaire/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 325,
+      "description": "Stop. That last message did not land \u2014 re-pitch it.",
+      "enabled": true,
+      "id": "mattpocock-skills:wait-what",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "wait-what",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/wait-what/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 10966,
+      "description": "Writing documents for agents. Use when creating or editing skills, or modifying AGENTS.md or CLAUDE.md.",
+      "enabled": true,
+      "id": "mattpocock-skills:writing-for-agents",
+      "marketplace": "claude-plugins-official",
+      "mtime": "2026-08-06T07:21:29Z",
+      "name": "writing-for-agents",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/writing-for-agents/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "plugin_key": "mattpocock-skills@claude-plugins-official",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "1.2.2"
+    },
+    {
+      "bytes": 2437,
+      "description": "Graph and visualize the installed Claude Code skill collection. Use when the user asks about their skill atlas, skill graph, dangling or broken skills, disabled plugins, duplicate skill names, or wants to visualize/audit what skills are actually loadable. Triggers - \"skill atlas\", \"skill graph\", \"map my skills\", \"which skills are dead\", \"dangling skills\", \"audit my skills\".",
+      "enabled": true,
+      "id": "skill-atlas:skill-atlas",
+      "marketplace": "skill-atlas-dev",
+      "mtime": "2026-08-06T07:25:47Z",
+      "name": "skill-atlas",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/skills/skill-atlas/SKILL.md",
+      "plugin": "skill-atlas",
+      "plugin_key": "skill-atlas@skill-atlas-dev",
+      "registered": true,
+      "scope": "plugin",
+      "type": "skill",
+      "version": "0.1.0"
+    },
+    {
+      "bytes": 6316,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "name": "hooks-patterns.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/hooks-patterns.md",
+      "type": "file"
+    },
+    {
+      "bytes": 8292,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/mcp-servers.md",
+      "name": "mcp-servers.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/mcp-servers.md",
+      "type": "file"
+    },
+    {
+      "bytes": 3016,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/plugins-reference.md",
+      "name": "plugins-reference.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/plugins-reference.md",
+      "type": "file"
+    },
+    {
+      "bytes": 9612,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/skills-reference.md",
+      "name": "skills-reference.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/skills-reference.md",
+      "type": "file"
+    },
+    {
+      "bytes": 5049,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/subagent-templates.md",
+      "name": "subagent-templates.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/claude-code-setup/1.0.0/skills/claude-automation-recommender/references/subagent-templates.md",
+      "type": "file"
+    },
+    {
+      "bytes": 4276,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/ask-matt/PHASE-BOUNDARIES.md",
+      "name": "PHASE-BOUNDARIES.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/ask-matt/PHASE-BOUNDARIES.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2559,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/DEEPENING.md",
+      "name": "DEEPENING.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/DEEPENING.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2712,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+      "name": "DESIGN-IT-TWICE.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/codebase-design/DESIGN-IT-TWICE.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1164,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh",
+      "name": "hitl-loop.template.sh",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/diagnosing-bugs/scripts/hitl-loop.template.sh",
+      "type": "file"
+    },
+    {
+      "bytes": 2766,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/ADR-FORMAT.md",
+      "name": "ADR-FORMAT.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/ADR-FORMAT.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2299,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/CONTEXT-FORMAT.md",
+      "name": "CONTEXT-FORMAT.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/domain-modeling/CONTEXT-FORMAT.md",
+      "type": "file"
+    },
+    {
+      "bytes": 6685,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
+      "name": "HTML-REPORT.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/improve-codebase-architecture/HTML-REPORT.md",
+      "type": "file"
+    },
+    {
+      "bytes": 6093,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/LOGIC.md",
+      "name": "LOGIC.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/LOGIC.md",
+      "type": "file"
+    },
+    {
+      "bytes": 6959,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/UI.md",
+      "name": "UI.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/prototype/UI.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2045,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/domain.md",
+      "name": "domain.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/domain.md",
+      "type": "file"
+    },
+    {
+      "bytes": 3746,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
+      "name": "issue-tracker-github.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-github.md",
+      "type": "file"
+    },
+    {
+      "bytes": 3827,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+      "name": "issue-tracker-gitlab.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-gitlab.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1815,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
+      "name": "issue-tracker-local.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/issue-tracker-local.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1045,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/triage-labels.md",
+      "name": "triage-labels.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/setup-matt-pocock-skills/triage-labels.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1481,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/mocking.md",
+      "name": "mocking.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/mocking.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2214,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/tests.md",
+      "name": "tests.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/tdd/tests.md",
+      "type": "file"
+    },
+    {
+      "bytes": 7972,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/AGENT-BRIEF.md",
+      "name": "AGENT-BRIEF.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/AGENT-BRIEF.md",
+      "type": "file"
+    },
+    {
+      "bytes": 4712,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/OUT-OF-SCOPE.md",
+      "name": "OUT-OF-SCOPE.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/triage/OUT-OF-SCOPE.md",
+      "type": "file"
+    },
+    {
+      "bytes": 8941,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/wizard/template.sh",
+      "name": "template.sh",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/engineering/wizard/template.sh",
+      "type": "file"
+    },
+    {
+      "bytes": 2777,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
+      "name": "LEARNING-RECORD-FORMAT.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/LEARNING-RECORD-FORMAT.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1553,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/MISSION-FORMAT.md",
+      "name": "MISSION-FORMAT.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/MISSION-FORMAT.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1926,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/RESOURCES-FORMAT.md",
+      "name": "RESOURCES-FORMAT.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/teach/RESOURCES-FORMAT.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2651,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+      "name": "SKILL-MECHANICS.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/productivity/writing-for-agents/SKILL-MECHANICS.md",
+      "type": "file"
+    },
+    {
+      "bytes": 5213,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/requesting-code-review/code-reviewer.md",
+      "name": "code-reviewer.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/requesting-code-review/code-reviewer.md",
+      "type": "file"
+    },
+    {
+      "bytes": 5213,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/../requesting-code-review/code-reviewer.md",
+      "name": "code-reviewer.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/../requesting-code-review/code-reviewer.md",
+      "type": "file"
+    },
+    {
+      "bytes": 5717,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/implementer-prompt.md",
+      "name": "implementer-prompt.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/implementer-prompt.md",
+      "type": "file"
+    },
+    {
+      "bytes": 4300,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/re-review-prompt.md",
+      "name": "re-review-prompt.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/re-review-prompt.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1469,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/review-package",
+      "name": "review-package",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/review-package",
+      "type": "file"
+    },
+    {
+      "bytes": 1586,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/sdd-workspace",
+      "name": "sdd-workspace",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/sdd-workspace",
+      "type": "file"
+    },
+    {
+      "bytes": 1158,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/task-brief",
+      "name": "task-brief",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/scripts/task-brief",
+      "type": "file"
+    },
+    {
+      "bytes": 7816,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/task-reviewer-prompt.md",
+      "name": "task-reviewer-prompt.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/subagent-driven-development/task-reviewer-prompt.md",
+      "type": "file"
+    },
+    {
+      "bytes": 8268,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/test-driven-development/writing-good-tests.md",
+      "name": "writing-good-tests.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/test-driven-development/writing-good-tests.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1495,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/antigravity-tools.md",
+      "name": "antigravity-tools.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/antigravity-tools.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1774,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/codex-tools.md",
+      "name": "codex-tools.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/codex-tools.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1242,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/pi-tools.md",
+      "name": "pi-tools.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/using-superpowers/references/pi-tools.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1774,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/../using-superpowers/references/codex-tools.md",
+      "name": "codex-tools.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/../using-superpowers/references/codex-tools.md",
+      "type": "file"
+    },
+    {
+      "bytes": 4598,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/../using-superpowers/references/gemini-tools.md",
+      "name": "gemini-tools.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/../using-superpowers/references/gemini-tools.md",
+      "type": "file"
+    },
+    {
+      "bytes": 12558,
+      "exists": true,
+      "id": "file:/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/testing-skills-with-subagents.md",
+      "name": "testing-skills-with-subagents.md",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/superpowers/6.2.0/skills/writing-skills/testing-skills-with-subagents.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2486,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/add-watch.md",
+      "name": "add-watch.md",
+      "path": "/home/danson/.claude/skills/graphify/references/add-watch.md",
+      "type": "file"
+    },
+    {
+      "bytes": 3362,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/exports.md",
+      "name": "exports.md",
+      "path": "/home/danson/.claude/skills/graphify/references/exports.md",
+      "type": "file"
+    },
+    {
+      "bytes": 7960,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/extraction-spec.md",
+      "name": "extraction-spec.md",
+      "path": "/home/danson/.claude/skills/graphify/references/extraction-spec.md",
+      "type": "file"
+    },
+    {
+      "bytes": 2177,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/github-and-merge.md",
+      "name": "github-and-merge.md",
+      "path": "/home/danson/.claude/skills/graphify/references/github-and-merge.md",
+      "type": "file"
+    },
+    {
+      "bytes": 1267,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/hooks.md",
+      "name": "hooks.md",
+      "path": "/home/danson/.claude/skills/graphify/references/hooks.md",
+      "type": "file"
+    },
+    {
+      "bytes": 13456,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/query.md",
+      "name": "query.md",
+      "path": "/home/danson/.claude/skills/graphify/references/query.md",
+      "type": "file"
+    },
+    {
+      "bytes": 3173,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/transcribe.md",
+      "name": "transcribe.md",
+      "path": "/home/danson/.claude/skills/graphify/references/transcribe.md",
+      "type": "file"
+    },
+    {
+      "bytes": 10425,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/graphify/references/update.md",
+      "name": "update.md",
+      "path": "/home/danson/.claude/skills/graphify/references/update.md",
+      "type": "file"
+    },
+    {
+      "bytes": 6083,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/prompt-master/references/patterns.md",
+      "name": "patterns.md",
+      "path": "/home/danson/.claude/skills/prompt-master/references/patterns.md",
+      "type": "file"
+    },
+    {
+      "bytes": 16650,
+      "exists": true,
+      "id": "file:/home/danson/.claude/skills/prompt-master/references/templates.md",
+      "name": "templates.md",
+      "path": "/home/danson/.claude/skills/prompt-master/references/templates.md",
+      "type": "file"
+    }
+  ],
+  "project": "danielLublinsky",
+  "roots": [
+    "/home/danson/.claude/skills",
+    "/home/danson/dev-stuff/danielLublinsky/.claude/skills"
+  ],
+  "source_fingerprint": "sha256:481af9e16be05790694a3c14b5895698d69d2f56c7ada838de0ab0991c0e7f37",
+  "stats": {
+    "broken_refs": 0,
+    "builtin": 0,
+    "dangling": 18,
+    "duplicate_names": [],
+    "edges": 108,
+    "enabled": 31,
+    "files": 53,
+    "orphan_ids": [
+      "mattpocock-skills:handoff",
+      "omarchy",
+      "skill-atlas:skill-atlas",
+      "superpowers:dispatching-parallel-agents",
+      "superpowers:receiving-code-review"
+    ],
+    "orphans": 5,
+    "skillmd_on_disk": 152,
+    "skills": 45,
+    "unregistered": 21
+  },
+  "unregistered_index": [
+    {
+      "name": "claude-handoff",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/in-progress/claude-handoff/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "loop-me",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/in-progress/loop-me/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "setup-ts-deep-modules",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/in-progress/setup-ts-deep-modules/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "writing-beats",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/in-progress/writing-beats/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "writing-fragments",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/in-progress/writing-fragments/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "writing-shape",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/in-progress/writing-shape/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "git-guardrails-claude-code",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/misc/git-guardrails-claude-code/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "migrate-to-shoehorn",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/misc/migrate-to-shoehorn/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "scaffold-exercises",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/misc/scaffold-exercises/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "setup-pre-commit",
+      "path": "/home/danson/.claude/plugins/cache/claude-plugins-official/mattpocock-skills/1.2.2/skills/misc/setup-pre-commit/SKILL.md",
+      "plugin": "mattpocock-skills",
+      "scope": "plugin"
+    },
+    {
+      "name": "linked-skill",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/linktarget/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "one",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/cache/fake-mp/alpha/0.9.0/skills/eng/one/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "qa",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/cache/fake-mp/alpha/1.0.0/skills/deprecated/qa/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "one",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/cache/fake-mp/alpha/1.0.0/skills/eng/one/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "two",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/cache/fake-mp/alpha/1.0.0/skills/eng/two/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "x",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/cache/fake-mp/beta/unknown/skills/x/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "y",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/cache/fake-mp/beta/unknown/skills/y/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "phantom",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/plugins/marketplaces/fake-mp/plugins/phantom/skills/phantom/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "graphify",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/project/.claude/skills/graphify/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "graphify",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/skills/graphify/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    },
+    {
+      "name": "plain-skill",
+      "path": "/home/danson/.claude/plugins/cache/skill-atlas-dev/skill-atlas/0.1.0/tests/fixtures/fakehome/skills/plain-skill/SKILL.md",
+      "plugin": "skill-atlas",
+      "scope": "plugin"
+    }
+  ],
+  "version": 2,
+  "view": "project"
+}
