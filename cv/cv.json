@@ -1,0 +1,128 @@
+{
+  "name": "Daniel Lublinsky",
+  "title": "Software Engineer",
+  "contact": {
+    "location": "Beersheva, Israel",
+    "phone": "0532409905",
+    "email": "daniellublinsky39@gmail.com",
+    "github": "github.com/danielLublinsky",
+    "linkedin": "linkedin.com/in/daniel-lublinsky"
+  },
+  "skills": [
+    {
+      "group": "General",
+      "items": [
+        ".NET Framework (VB / C#)",
+        "Microsoft SQL Server",
+        "Python, Node, React"
+      ]
+    },
+    {
+      "group": "Cloud",
+      "items": [
+        "Google Cloud — BQ, Vertex",
+        "S3, Cloud Run, SES Mail",
+        "Docker, Linux, OpenShift",
+        "NGINX, IIS, Windows Servers"
+      ]
+    },
+    {
+      "group": "AI & Data",
+      "items": [
+        "RAG / GraphRAG pipelines",
+        "Multi-agent orchestration",
+        "Fine tuning, Context caching",
+        "Embeddings, Tooling & MCP"
+      ]
+    },
+    {
+      "group": "Development",
+      "items": [
+        "Claude Code, Herdr",
+        "Agents, plugins & skills",
+        "MCP servers & tooling",
+        "Arch Linux, Jupyter, Git"
+      ]
+    }
+  ],
+  "experience": [
+    {
+      "company": "Contiki I.T",
+      "dates": "Sep 2022 - present (4 yrs 2 mos)",
+      "meta": "Full-time • Remote",
+      "roles": [
+        {
+          "title": "Lead AI Engineer",
+          "dates": "Aug 2025 - present · 1 yr 3 mos",
+          "bullets": [
+            "Developing B2B BI AI retrieval with RAG, CAG BigQuery and Graph Query.",
+            "Multi-agent reasoning harness with orchestration, decision trees and context-grounded tools.",
+            "Safety evaluations and model hallucinations, alignment and performance optimization."
+          ]
+        },
+        {
+          "title": ".NET Engineer",
+          "dates": "Sep 2022 - present • South District, Israel",
+          "bullets": [
+            "Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.",
+            "Architected multi-threaded .NET engines and used dump analysis to resolve deadlocks and memory leaks.",
+            "Refactor and maintain legacy software, optimizing I/O performance, dependency injections and external API integrations."
+          ]
+        }
+      ]
+    },
+    {
+      "company": "IAF Flight Test Center",
+      "dates": "Dec 2023 - Nov 2026 (3 yrs)",
+      "meta": "Lead Software Engineer • Israeli Air Force • Mandatory military service",
+      "bullets": [
+        "Built .ASP & FastAPI backends to analyze and model avionics blocks.",
+        "Developed ML change point detection systems using HMM and ruptures, and neural network regression.",
+        "Architected data-heavy React frontends, integrating WASM and Jupyter environments, configuring NGINX and Git pipelines."
+      ]
+    },
+    {
+      "company": "Freelance Full Stack",
+      "dates": "Jan 2021 - Aug 2022 (1 yr 7 mos)",
+      "meta": "Independent Developer",
+      "bullets": [
+        "Developed and maintained full-stack applications for multiple clients (blogs, websites & apps).",
+        "Developed iOS applications in Swift, integrating native Android features and APIs."
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "name": "Unix-style 32-bit OS",
+      "description": "A 32-bit operating system. The operating system features a FAT16 file system, a two-stage bootloader, a physical memory manager, and a command shell written in C and Assembly."
+    },
+    {
+      "name": "FPV Drone Lab",
+      "description": "Quadcopters built from bare frames — ESC/motor soldering, wiring, flight-controller and VTX integration. Betaflight firmware contributions, EdgeTX Lua scripting, ExpressLRS link protocols, and PID and filter tuning."
+    }
+  ],
+  "background": "Hello,\nI am an American software engineer living in Beersheva, Israel. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build, solder and tune drones.",
+  "education": [
+    {
+      "school": "The Open University of Israel",
+      "degree": "B.Sc. Electrical and Electronics Engineering",
+      "dates": "Jul 2026 · In progress"
+    },
+    {
+      "school": "Magshimim",
+      "degree": "Pre-military cyber program",
+      "dates": "Oct 2021 - Aug 2023",
+      "note": "Low-level programming, hardware systems and networking."
+    }
+  ],
+  "volunteering": [
+    {
+      "role": "Visiting Lecturer",
+      "org": "Magshimim",
+      "field": "Education",
+      "note": "Lecturing students on cyber & networking concepts, helping them manage their time and giving supportive advice to push education.",
+      "length": "1 year",
+      "tag": "Volunteering"
+    }
+  ]
+}

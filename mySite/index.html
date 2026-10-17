@@ -236,6 +236,55 @@
     .exp-logo svg { width: 20px; height: 20px; }
     .exp-company { font-size: .92rem; font-weight: 700; color: var(--text); }
     .exp-meta { font-size: .76rem; color: var(--muted); margin-bottom: .65rem; }
+
+    /* ── EDUCATION & VOLUNTEERING ── */
+    .edu-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .edu-card {
+      border: 1px solid var(--border); border-radius: 10px; padding: 1.15rem 1.3rem 1.25rem;
+      background: #fff; display: flex; flex-direction: column;
+      transition: box-shadow .35s cubic-bezier(0.22,1,0.36,1), border-color .35s ease, transform .35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .edu-card:hover { box-shadow: 0 16px 48px rgba(42,92,255,.16); border-color: rgba(42,92,255,.5); transform: translateY(-6px) scale(1.01); }
+    .edu-card-wide { grid-column: 1 / -1; }
+    .edu-card-head { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-bottom: .85rem; }
+    .edu-logo {
+      height: 40px; min-width: 40px; padding: .3rem .4rem; flex-shrink: 0;
+      border: 1px solid var(--border); border-radius: 9px; background: #fff;
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+      transition: transform .35s cubic-bezier(0.22,1,0.36,1);
+    }
+    .edu-card:hover .edu-logo { transform: scale(1.08) rotate(-3deg); }
+    .edu-logo img { max-height: 28px; max-width: 34px; object-fit: contain; display: block; }
+    .edu-logo.edu-logo-wide { padding: .3rem .55rem; }
+    .edu-logo.edu-logo-wide img { width: 112px; max-width: 112px; max-height: 26px; height: auto; }
+    .edu-status {
+      font-size: .6rem; font-weight: 700; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--green); background: rgba(16,185,129,.1); border: 1px solid rgba(16,185,129,.28);
+      border-radius: 999px; padding: .2rem .55rem; white-space: nowrap;
+    }
+    .edu-status-vol { color: var(--blue); background: rgba(42,92,255,.09); border-color: rgba(42,92,255,.25); }
+    .edu-name { font-size: .92rem; font-weight: 700; color: var(--text); }
+    .edu-degree { font-size: .81rem; color: #444; margin-top: .2rem; }
+    .edu-dates { font-size: .72rem; color: var(--muted); margin-top: .3rem; }
+    .edu-note { font-size: .79rem; color: var(--muted); line-height: 1.65; margin-top: .7rem; }
+    .exp-company-meta { font-size: .74rem; color: var(--muted); margin-bottom: .95rem; }
+    .exp-roles { position: relative; padding-left: 1.05rem; }
+    .exp-roles::before {
+      content: ''; position: absolute; left: 3px; top: .5rem; bottom: .5rem; width: 1px;
+      background: linear-gradient(180deg, rgba(42,92,255,.35), rgba(42,92,255,.08));
+    }
+    .exp-role { position: relative; margin-bottom: 1.25rem; }
+    .exp-role:last-child { margin-bottom: 0; }
+    .exp-role::before {
+      content: ''; position: absolute; left: -1.05rem; top: .28rem;
+      width: 7px; height: 7px; border-radius: 50%; box-sizing: border-box;
+      background: #fff; border: 2px solid var(--blue);
+      transition: transform .35s cubic-bezier(0.22,1,0.36,1), background .35s ease;
+    }
+    .exp-item:hover .exp-role::before { transform: scale(1.25); background: rgba(42,92,255,.18); }
+    .exp-role-title { font-size: .85rem; font-weight: 650; color: var(--text); }
+    .exp-role-meta { font-size: .73rem; color: var(--muted); margin: .15rem 0 .5rem; }
     .exp-bullets { list-style: none; }
     .exp-bullets li {
       font-size: .81rem; color: #444; padding-left: .85rem;
@@ -446,6 +495,7 @@
       }
       .contact-item { margin-bottom: 0; }
       .nav-links { display: none; }
+      .edu-grid { grid-template-columns: 1fr; }
       .right { padding: 1.5rem 1.2rem 2.5rem; background-size: 20px 20px; }
       .section { margin-bottom: 3rem; }
       .skills-grid { grid-template-columns: 1fr 1fr; }
@@ -678,10 +728,11 @@
     <div class="left-top">
       <h1>Daniel<br>Lublinsky</h1>
       <p class="role" id="role-text"></p>
-      <a class="cv-download" href="MYCV_2026.pdf" download>Download CV</a>
+      <a class="cv-download" href="daniel_lublinsky_cv.pdf" download>Download CV</a>
       <ul class="nav-links">
         <li><a href="#skills">Skills</a></li>
         <li><a href="#experience">Experience</a></li>
+        <li><a href="#education">Education</a></li>
         <li><a href="#github">GitHub</a></li>
         <li><a href="#projects">Projects</a></li>
         <li><a href="#background">Background</a></li>
@@ -726,6 +777,7 @@
             <span class="pill pill-indigo"><i class="devicon-amazonwebservices-plain colored"></i>S3</span>
             <span class="pill pill-indigo"><i class="devicon-amazonwebservices-plain colored"></i>AWS SES</span>
             <span class="pill pill-indigo"><i class="devicon-docker-plain colored"></i>Docker</span>
+            <span class="pill pill-indigo"><img src="https://github.com/archlinux.png?size=24" alt="Arch Linux">Arch Linux</span>
             <span class="pill pill-indigo"><i class="devicon-redhat-plain colored"></i>OpenShift</span>
             <span class="pill pill-indigo"><i class="devicon-nginx-plain colored"></i>NGINX</span>
             <span class="pill pill-indigo"><i class="devicon-git-plain colored"></i>Git</span>
@@ -788,12 +840,30 @@
             <div class="exp-logo"><img src="https://www.contiki.co.il/img/logo-transparent.png" alt="Contiki"></div>
             <div class="exp-company">Contiki I.T</div>
           </div>
-          <div class="exp-meta">Lead .NET &amp; AI Engineer &nbsp;·&nbsp; Remote &nbsp;·&nbsp; Sep 2022 – present (~4 yrs)</div>
-          <ul class="exp-bullets">
-            <li>Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.</li>
-            <li>Refactor and maintain legacy software, optimizing I/O performance, .NET &amp; dependency migrations and external API integrations.</li>
-            <li>Designed and implemented AI services — Vector search, BigQuery, multimodal pipelines, and fine-tuning.</li>
-          </ul>
+          <div class="exp-company-meta">Full-time &nbsp;·&nbsp; Sep 2022 – present (4 yrs 2 mos) &nbsp;·&nbsp; Remote</div>
+          <div class="exp-roles">
+
+            <div class="exp-role">
+              <div class="exp-role-title">Lead AI Engineer</div>
+              <div class="exp-role-meta">Aug 2025 – present &nbsp;·&nbsp; 1 yr 3 mos</div>
+              <ul class="exp-bullets">
+                <li>Developing B2B BI AI retrieval with RAG, CAG BigQuery and Graph Query.</li>
+                <li>Multi-agent reasoning harness with orchestration, decision trees and context-grounded tools.</li>
+                <li>Safety evaluations and model hallucinations, alignment and performance optimization.</li>
+              </ul>
+            </div>
+
+            <div class="exp-role">
+              <div class="exp-role-title">.NET Engineer</div>
+              <div class="exp-role-meta">Sep 2022 – present &nbsp;·&nbsp; 4 yrs 2 mos &nbsp;·&nbsp; South District, Israel</div>
+              <ul class="exp-bullets">
+                <li>Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.</li>
+                <li>Architected multi-threaded .NET engines and used dump analysis to resolve deadlocks and memory leaks.</li>
+                <li>Refactor and maintain legacy software, optimizing I/O performance, dependency injections and external API integrations.</li>
+              </ul>
+            </div>
+
+          </div>
         </div>
 
         <div class="exp-item">
@@ -801,10 +871,10 @@
             <div class="exp-logo"><img src="iaf-logo.png" alt="IAF"></div>
             <div class="exp-company">IAF Flight Test Center</div>
           </div>
-          <div class="exp-meta">Lead Full Stack Developer &nbsp;·&nbsp; Military service &nbsp;·&nbsp; Dec 2023 – Aug 2026</div>
+          <div class="exp-meta">Lead Software Engineer &nbsp;·&nbsp; Israeli Air Force &nbsp;·&nbsp; Dec 2023 – Nov 2026 (3 yrs) &nbsp;·&nbsp; Center District, Israel &nbsp;·&nbsp; On-site</div>
           <ul class="exp-bullets">
             <li>Built .ASP &amp; FastAPI backends to analyze and model avionics blocks.</li>
-            <li>Developed ML change point detection systems and neural network regression.</li>
+            <li>Developed ML change point detection systems using HMM and ruptures, and neural network regression.</li>
             <li>Architected data-heavy React frontends, integrating WASM and Jupyter environments, configuring NGINX and Git pipelines.</li>
           </ul>
         </div>
@@ -823,6 +893,45 @@
             <li>Developed full-stack applications for multiple clients — blogs, websites, and apps.</li>
             <li>Built iOS applications in Swift, integrating native Android features and APIs.</li>
           </ul>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- EDUCATION & VOLUNTEERING -->
+    <div class="section" id="education">
+      <div class="section-label animate">Education &amp; Volunteering</div>
+      <div class="edu-grid animate-children">
+
+        <div class="edu-card">
+          <div class="edu-card-head">
+            <div class="edu-logo edu-logo-wide"><img src="openu-logo.svg" alt="The Open University of Israel"></div>
+            <span class="edu-status">In progress</span>
+          </div>
+          <div class="edu-name">The Open University of Israel</div>
+          <div class="edu-degree">B.Sc. Electrical and Electronics Engineering</div>
+          <div class="edu-dates">Jul 2026 – present</div>
+        </div>
+
+        <div class="edu-card">
+          <div class="edu-card-head">
+            <div class="edu-logo"><img src="magshimim-logo.png" alt="Magshimim"></div>
+          </div>
+          <div class="edu-name">Magshimim</div>
+          <div class="edu-degree">Pre-military cyber program</div>
+          <div class="edu-dates">Oct 2021 – Aug 2023</div>
+          <p class="edu-note">Low-level programming, hardware systems and networking.</p>
+        </div>
+
+        <div class="edu-card edu-card-wide">
+          <div class="edu-card-head">
+            <div class="edu-logo"><img src="magshimim-logo.png" alt="Magshimim"></div>
+            <span class="edu-status edu-status-vol">Volunteering</span>
+          </div>
+          <div class="edu-name">Visiting Lecturer</div>
+          <div class="edu-degree">Magshimim &nbsp;·&nbsp; Education</div>
+          <div class="edu-dates">1 year</div>
+          <p class="edu-note">Lecturing students on cyber &amp; networking concepts, helping them manage their time and giving supportive advice to push education.</p>
         </div>
 
       </div>
@@ -850,7 +959,7 @@
               <div class="project-name">Unix-style 32-bit OS</div>
               <span class="project-arrow">↗</span>
             </div>
-            <p class="project-desc">A 32-bit operating system featuring a FAT16 file system, a two-stage bootloader, a physical memory manager, and a shell — written from scratch in C and Assembly.</p>
+            <p class="project-desc">A 32-bit operating system. The operating system features a FAT16 file system, a two-stage bootloader, a physical memory manager, and a command shell written in C and Assembly.</p>
             <a class="project-link" href="https://github.com/danielLublinsky/OS_proj-2022-16bit" target="_blank" rel="noopener">github.com/danielLublinsky/OS_proj-2022-16bit</a>
             <div class="project-chips">
               <span class="chip">C</span><span class="chip">x86 Assembly</span>
@@ -909,7 +1018,7 @@
     <div class="section" id="background">
       <div class="section-label animate">Background</div>
       <div class="bg-card animate">
-        <p class="bg-text">Hello,<br>I am Software engineer living in Beersheva. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build solder and tune drones.</p>
+        <p class="bg-text">Hello,<br>I am an American software engineer living in Beersheva, Israel. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build, solder and tune drones.</p>
       </div>
     </div>
 
@@ -1144,7 +1253,7 @@
   (function typewriter() {
     const el = document.getElementById('role-text');
     if (!el) return;
-    const phrases = ['Software Engineer', 'FPV Drone Builder', 'Open-Source Contributor'];
+    const phrases = ['Lead AI Engineer', 'Software Engineer', 'FPV Drone Builder', 'Open-Source Contributor'];
     let pi = 0, ci = 0, deleting = false;
     function tick() {
       const phrase = phrases[pi];
