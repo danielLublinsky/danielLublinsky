@@ -14,34 +14,40 @@
       "items": [
         ".NET Framework (VB / C#)",
         "Microsoft SQL Server",
-        "Python, Node, React"
+        "Python, Node, React",
+        "Rust, C / C++"
       ]
     },
     {
       "group": "Cloud",
       "items": [
         "Google Cloud — BQ, Vertex",
-        "S3, Cloud Run, SES Mail",
-        "Docker, Linux, OpenShift",
+        "Cloud Run, Docker",
         "NGINX, IIS, Windows Servers"
       ]
     },
     {
       "group": "AI & Data",
       "items": [
-        "RAG / GraphRAG pipelines",
+        "RAG, embeddings, decision trees",
         "Multi-agent orchestration",
-        "Fine tuning, Context caching",
-        "Embeddings, Tooling & MCP"
+        "Evaluations, fine tuning"
+      ]
+    },
+    {
+      "group": "OS & Low level",
+      "items": [
+        "Arch Linux, Red Hat, OpenShift",
+        "x86 ASM, UNIX internals",
+        "File systems, BIOS & bootloaders"
       ]
     },
     {
       "group": "Development",
       "items": [
-        "Claude Code, Herdr",
-        "Agents, plugins & skills",
-        "MCP servers & tooling",
-        "Arch Linux, Jupyter, Git"
+        "Claude Code, Herdr, Muse",
+        "Agents, plugins & MCP tooling",
+        "Jupyter, Git"
       ]
     }
   ],

@@ -13,7 +13,7 @@
   --faint:   #9aa1ad;
   --rule:    #dfe3ea;
   --page-x:  14mm;
-  --page-y:  9.5mm;
+  --page-y:  9mm;
 }
 
 @page { size: A4; margin: 0; }
@@ -53,13 +53,13 @@ body {
   color: var(--text); padding-bottom: .3rem; margin-bottom: .75rem;
   border-bottom: 2px solid var(--accent);
 }
-.block + .block { margin-top: .9rem; }
+.block + .block { margin-top: .75rem; }
 
 /* ── skills (left rail) ── */
-.skill-group + .skill-group { margin-top: .7rem; }
-.skill-group-name { font-size: 8.4pt; font-weight: 700; color: var(--accent); margin-bottom: .18rem; }
-.skill-list { list-style: none; font-size: 8.5pt; color: #3b4047; }
-.skill-list li { line-height: 1.45; }
+.skill-group + .skill-group { margin-top: .48rem; }
+.skill-group-name { font-size: 8.3pt; font-weight: 700; color: var(--accent); margin-bottom: .14rem; }
+.skill-list { list-style: none; font-size: 8.4pt; color: #3b4047; }
+.skill-list li { line-height: 1.36; }
 
 /* ── experience ── */
 .exp { break-inside: avoid; }
@@ -147,16 +147,19 @@ code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, m
     <div class="section-label">Skills</div>
     <div class="skill-group">
       <div class="skill-group-name">General</div>
-      <ul class="skill-list"><li>.NET Framework (VB / C#)</li><li>Microsoft SQL Server</li><li>Python, Node, React</li></ul>
+      <ul class="skill-list"><li>.NET Framework (VB / C#)</li><li>Microsoft SQL Server</li><li>Python, Node, React</li><li>Rust, C / C++</li></ul>
     </div><div class="skill-group">
       <div class="skill-group-name">Cloud</div>
-      <ul class="skill-list"><li>Google Cloud — BQ, Vertex</li><li>S3, Cloud Run, SES Mail</li><li>Docker, Linux, OpenShift</li><li>NGINX, IIS, Windows Servers</li></ul>
+      <ul class="skill-list"><li>Google Cloud — BQ, Vertex</li><li>Cloud Run, Docker</li><li>NGINX, IIS, Windows Servers</li></ul>
     </div><div class="skill-group">
       <div class="skill-group-name">AI &amp; Data</div>
-      <ul class="skill-list"><li>RAG / GraphRAG pipelines</li><li>Multi-agent orchestration</li><li>Fine tuning, Context caching</li><li>Embeddings, Tooling &amp; MCP</li></ul>
+      <ul class="skill-list"><li>RAG, embeddings, decision trees</li><li>Multi-agent orchestration</li><li>Evaluations, fine tuning</li></ul>
+    </div><div class="skill-group">
+      <div class="skill-group-name">OS &amp; Low level</div>
+      <ul class="skill-list"><li>Arch Linux, Red Hat, OpenShift</li><li>x86 ASM, UNIX internals</li><li>File systems, BIOS &amp; bootloaders</li></ul>
     </div><div class="skill-group">
       <div class="skill-group-name">Development</div>
-      <ul class="skill-list"><li>Claude Code, Herdr</li><li>Agents, plugins &amp; skills</li><li>MCP servers &amp; tooling</li><li>Arch Linux, Jupyter, Git</li></ul>
+      <ul class="skill-list"><li>Claude Code, Herdr, Muse</li><li>Agents, plugins &amp; MCP tooling</li><li>Jupyter, Git</li></ul>
     </div>
   </div>
       <div class="block">

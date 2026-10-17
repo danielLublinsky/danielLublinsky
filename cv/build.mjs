@@ -52,7 +52,7 @@ const CSS = `
   --faint:   #9aa1ad;
   --rule:    #dfe3ea;
   --page-x:  14mm;
-  --page-y:  9.5mm;
+  --page-y:  9mm;
 }
 
 @page { size: A4; margin: 0; }
@@ -92,13 +92,13 @@ body {
   color: var(--text); padding-bottom: .3rem; margin-bottom: .75rem;
   border-bottom: 2px solid var(--accent);
 }
-.block + .block { margin-top: .9rem; }
+.block + .block { margin-top: .75rem; }
 
 /* ── skills (left rail) ── */
-.skill-group + .skill-group { margin-top: .7rem; }
-.skill-group-name { font-size: 8.4pt; font-weight: 700; color: var(--accent); margin-bottom: .18rem; }
-.skill-list { list-style: none; font-size: 8.5pt; color: #3b4047; }
-.skill-list li { line-height: 1.45; }
+.skill-group + .skill-group { margin-top: .48rem; }
+.skill-group-name { font-size: 8.3pt; font-weight: 700; color: var(--accent); margin-bottom: .14rem; }
+.skill-list { list-style: none; font-size: 8.4pt; color: #3b4047; }
+.skill-list li { line-height: 1.36; }
 
 /* ── experience ── */
 .exp { break-inside: avoid; }
