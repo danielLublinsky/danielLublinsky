@@ -46,7 +46,7 @@ body {
 }
 
 /* ── two-column body ── */
-.cols { display: grid; grid-template-columns: 54mm 1fr; gap: 0 10mm; align-items: start; }
+.cols { display: grid; grid-template-columns: 50mm 1fr; gap: 0 8mm; align-items: start; }
 
 .section-label {
   font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: .2em;
@@ -94,6 +94,8 @@ body {
 .bullets li { position: relative; padding-left: .72rem; margin-bottom: .1rem; color: #3b4047; }
 .bullets li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 
+.job-skills { margin-top: .22rem; font-size: 7.6pt; color: var(--muted); }
+
 /* ── projects ── */
 .project { break-inside: avoid; }
 .project + .project { margin-top: .5rem; }
@@ -117,10 +119,10 @@ body {
 /* ── full-width bands below the two columns ── */
 .band { margin-top: .75rem; padding-top: .6rem; border-top: 1px solid var(--rule); break-inside: avoid; }
 
-/* ── background ── */
-.background { }
-.background p { color: #3b4047; margin-top: .35rem; }
-.background p:first-of-type { margin-top: .4rem; }
+/* ── background (top of page, above the columns) ── */
+.background { margin-bottom: .85rem; }
+.background p { color: #3b4047; }
+.background p + p { margin-top: .35rem; }
 
 code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace; font-size: .92em; }
 
@@ -141,19 +143,24 @@ code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, m
     <div class="job-title">Software Engineer</div>
   </div>
 
+  <div class="background">
+    <div class="section-label">Background</div>
+    <p>I am an American software engineer with 5+ years of experience building backends, full-stack applications, data-intensive systems, and AI harnesses and pipelines. Hands-on with TypeScript, .NET, Python, SQL, GCP &amp; AWS. Fluent in Hebrew, English, and Russian.</p>
+  </div>
+
   <div class="cols">
     <aside>
       <div class="block">
     <div class="section-label">Skills</div>
     <div class="skill-group">
       <div class="skill-group-name">General</div>
-      <ul class="skill-list"><li>.NET Framework (VB / C#)</li><li>Microsoft SQL Server</li><li>Python, Node, React</li><li>Rust, C / C++</li></ul>
+      <ul class="skill-list"><li>.NET Framework (VB / C#)</li><li>Microsoft SQL Server</li><li>Python, Node, React, Next.js</li><li>Rust, C / C++</li></ul>
     </div><div class="skill-group">
       <div class="skill-group-name">Cloud</div>
       <ul class="skill-list"><li>Google Cloud — BQ, Vertex</li><li>Cloud Run, Docker</li><li>NGINX, IIS, Windows Servers</li></ul>
     </div><div class="skill-group">
       <div class="skill-group-name">AI &amp; Data</div>
-      <ul class="skill-list"><li>RAG, embeddings, decision trees</li><li>Multi-agent orchestration</li><li>Evaluations, fine tuning</li></ul>
+      <ul class="skill-list"><li>RAG, embeddings, decision trees</li><li>Multi-agent orchestration</li><li>Context management</li><li>Evaluations, fine tuning</li></ul>
     </div><div class="skill-group">
       <div class="skill-group-name">OS &amp; Low level</div>
       <ul class="skill-list"><li>Arch Linux, Red Hat, OpenShift</li><li>x86 ASM, UNIX internals</li><li>File systems, BIOS &amp; bootloaders</li></ul>
@@ -186,18 +193,21 @@ code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, m
       </div>
       <div class="exp-meta">Full-time • Remote</div>
       
+      
       <div class="roles"><div class="role">
         <div class="role-line">
           <div class="role-title">Lead AI Engineer</div>
           <div class="role-dates">Aug 2025 - present · 1 yr 3 mos</div>
         </div>
-        <ul class="bullets"><li>Developing B2B BI AI retrieval with RAG, CAG BigQuery and Graph Query.</li><li>Multi-agent reasoning harness with orchestration, decision trees and context-grounded tools.</li><li>Safety evaluations and model hallucinations, alignment and performance optimization.</li></ul>
+        <ul class="bullets"><li>Developing B2B BI AI retrieval with RAG, CAG BigQuery and Graph Query.</li><li>Multi-agent reasoning harness with orchestration, decision trees, context management and context-grounded tools.</li><li>Safety evaluations and model hallucinations, alignment and performance optimization.</li></ul>
+        <div class="job-skills">[Python, TypeScript, SQL, MCP, BigQuery, Orchestration, Graph Query, RAG, Context AG]</div>
       </div><div class="role">
         <div class="role-line">
           <div class="role-title">.NET Engineer</div>
           <div class="role-dates">Sep 2022 - present • South District, Israel</div>
         </div>
-        <ul class="bullets"><li>Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.</li><li>Architected multi-threaded .NET engines and used dump analysis to resolve deadlocks and memory leaks.</li><li>Refactor and maintain legacy software, optimizing I/O performance, dependency injections and external API integrations.</li></ul>
+        <ul class="bullets"><li>Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.</li><li>Architected multi-threaded .NET backend engines and used dump analysis to resolve deadlocks and memory leaks.</li><li>Refactor and maintain legacy software, optimizing I/O performance, dependency injections, ERP and external API integrations.</li></ul>
+        <div class="job-skills">[C#, VB.NET, PowerShell, Multithreading, ODBC / OLE DB, SQL Server, DuckDB, ERP APIs]</div>
       </div></div>
     </div><div class="exp">
       <div class="exp-line1">
@@ -206,6 +216,7 @@ code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, m
       </div>
       <div class="exp-meta">Lead Software Engineer • Israeli Air Force • Mandatory military service</div>
       <ul class="bullets"><li>Built .ASP &amp; FastAPI backends to analyze and model avionics blocks.</li><li>Developed ML change point detection systems using HMM and ruptures, and neural network regression.</li><li>Architected data-heavy React frontends, integrating WASM and Jupyter environments, configuring NGINX and Git pipelines.</li></ul>
+      <div class="job-skills">[Python, C#, JavaScript / TypeScript, ASP.NET, FastAPI, React, WASM, OpenShift, Jupyter]</div>
       
     </div><div class="exp">
       <div class="exp-line1">
@@ -214,6 +225,7 @@ code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, m
       </div>
       <div class="exp-meta">Independent Developer</div>
       <ul class="bullets"><li>Developed and maintained full-stack applications for multiple clients (blogs, websites &amp; apps).</li><li>Developed iOS applications in Swift, integrating native Android features and APIs.</li></ul>
+      <div class="job-skills">[Swift, JavaScript, React, Next.js, Node.js, SQLite, Firebase]</div>
       
     </div>
   </div></main>
@@ -235,11 +247,6 @@ code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, m
       <div class="vol-field">Education &bull; 1 year</div>
       <div class="vol-note">Lecturing students on cyber &amp; networking concepts, helping them manage their time and giving supportive advice to push education.</div>
     </div>
-  </div>
-
-  <div class="band background">
-    <div class="section-label">Background</div>
-    <p>Hello,</p><p>I am an American software engineer living in Beersheva, Israel. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build, solder and tune drones.</p>
   </div>
 
 </div>

@@ -59,6 +59,13 @@ two roles on a shared timeline rail):
 
 Both keys may coexist: `bullets` on the entry render above the nested `roles`.
 
+A flat entry or a nested role can also carry a `skills` list, rendered together in brackets
+under its bullets:
+
+```json
+"skills": ["Python", "SQL", "FastAPI", "React", "BigQuery"]
+```
+
 `background` splits on newlines into paragraphs. Inside any text field you can use
 `**bold**`, `*italic*` and `` `code` ``.
 

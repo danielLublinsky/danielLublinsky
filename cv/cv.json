@@ -14,7 +14,7 @@
       "items": [
         ".NET Framework (VB / C#)",
         "Microsoft SQL Server",
-        "Python, Node, React",
+        "Python, Node, React, Next.js",
         "Rust, C / C++"
       ]
     },
@@ -31,6 +31,7 @@
       "items": [
         "RAG, embeddings, decision trees",
         "Multi-agent orchestration",
+        "Context management",
         "Evaluations, fine tuning"
       ]
     },
@@ -62,18 +63,20 @@
           "dates": "Aug 2025 - present · 1 yr 3 mos",
           "bullets": [
             "Developing B2B BI AI retrieval with RAG, CAG BigQuery and Graph Query.",
-            "Multi-agent reasoning harness with orchestration, decision trees and context-grounded tools.",
+            "Multi-agent reasoning harness with orchestration, decision trees, context management and context-grounded tools.",
             "Safety evaluations and model hallucinations, alignment and performance optimization."
-          ]
+          ],
+          "skills": ["Python", "TypeScript", "SQL", "MCP", "BigQuery", "Orchestration", "Graph Query", "RAG", "Context AG"]
         },
         {
           "title": ".NET Engineer",
           "dates": "Sep 2022 - present • South District, Israel",
           "bullets": [
             "Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.",
-            "Architected multi-threaded .NET engines and used dump analysis to resolve deadlocks and memory leaks.",
-            "Refactor and maintain legacy software, optimizing I/O performance, dependency injections and external API integrations."
-          ]
+            "Architected multi-threaded .NET backend engines and used dump analysis to resolve deadlocks and memory leaks.",
+            "Refactor and maintain legacy software, optimizing I/O performance, dependency injections, ERP and external API integrations."
+          ],
+          "skills": ["C#", "VB.NET", "PowerShell", "Multithreading", "ODBC / OLE DB", "SQL Server", "DuckDB", "ERP APIs"]
         }
       ]
     },
@@ -85,7 +88,8 @@
         "Built .ASP & FastAPI backends to analyze and model avionics blocks.",
         "Developed ML change point detection systems using HMM and ruptures, and neural network regression.",
         "Architected data-heavy React frontends, integrating WASM and Jupyter environments, configuring NGINX and Git pipelines."
-      ]
+      ],
+      "skills": ["Python", "C#", "JavaScript / TypeScript", "ASP.NET", "FastAPI", "React", "WASM", "OpenShift", "Jupyter"]
     },
     {
       "company": "Freelance Full Stack",
@@ -94,7 +98,8 @@
       "bullets": [
         "Developed and maintained full-stack applications for multiple clients (blogs, websites & apps).",
         "Developed iOS applications in Swift, integrating native Android features and APIs."
-      ]
+      ],
+      "skills": ["Swift", "JavaScript", "React", "Next.js", "Node.js", "SQLite", "Firebase"]
     }
   ],
   "projects": [
@@ -107,7 +112,7 @@
       "description": "Quadcopters built from bare frames — ESC/motor soldering, wiring, flight-controller and VTX integration. Betaflight firmware contributions, EdgeTX Lua scripting, ExpressLRS link protocols, and PID and filter tuning."
     }
   ],
-  "background": "Hello,\nI am an American software engineer living in Beersheva, Israel. Born in Connecticut, USA. Fluent in Hebrew, English, and Russian. Programming since 2019, with a strong interest in hardware and AI. I run a small workshop where I build, solder and tune drones.",
+  "background": "I am an American software engineer with 5+ years of experience building backends, full-stack applications, data-intensive systems, and AI harnesses and pipelines. Hands-on with TypeScript, .NET, Python, SQL, GCP & AWS. Fluent in Hebrew, English, and Russian.",
   "education": [
     {
       "school": "The Open University of Israel",

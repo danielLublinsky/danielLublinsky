@@ -40,6 +40,10 @@ const rich = (s) => esc(s)
 const bullets = (list = []) =>
   list.length ? `<ul class="bullets">${list.map((b) => `<li>${rich(b)}</li>`).join('')}</ul>` : '';
 
+// per-job skills, listed together in brackets under the bullets
+const jobSkills = (skills = []) =>
+  skills.length ? `<div class="job-skills">[${skills.map(rich).join(', ')}]</div>` : '';
+
 /* ─────────────────────────── styles ─────────────────────────── */
 
 const CSS = `
@@ -85,7 +89,7 @@ body {
 }
 
 /* ── two-column body ── */
-.cols { display: grid; grid-template-columns: 54mm 1fr; gap: 0 10mm; align-items: start; }
+.cols { display: grid; grid-template-columns: 50mm 1fr; gap: 0 8mm; align-items: start; }
 
 .section-label {
   font-size: 8pt; font-weight: 700; text-transform: uppercase; letter-spacing: .2em;
@@ -133,6 +137,8 @@ body {
 .bullets li { position: relative; padding-left: .72rem; margin-bottom: .1rem; color: #3b4047; }
 .bullets li::before { content: '•'; position: absolute; left: 0; color: var(--accent); }
 
+.job-skills { margin-top: .22rem; font-size: 7.6pt; color: var(--muted); }
+
 /* ── projects ── */
 .project { break-inside: avoid; }
 .project + .project { margin-top: .5rem; }
@@ -156,10 +162,10 @@ body {
 /* ── full-width bands below the two columns ── */
 .band { margin-top: .75rem; padding-top: .6rem; border-top: 1px solid var(--rule); break-inside: avoid; }
 
-/* ── background ── */
-.background { }
-.background p { color: #3b4047; margin-top: .35rem; }
-.background p:first-of-type { margin-top: .4rem; }
+/* ── background (top of page, above the columns) ── */
+.background { margin-bottom: .85rem; }
+.background p { color: #3b4047; }
+.background p + p { margin-top: .35rem; }
 
 code { font-family: "JetBrains Mono", ui-monospace, "Cascadia Code", Consolas, monospace; font-size: .92em; }
 
@@ -194,12 +200,14 @@ function renderExperience(experience = []) {
       </div>
       ${e.meta ? `<div class="exp-meta">${rich(e.meta)}</div>` : ''}
       ${bullets(e.bullets)}
+      ${jobSkills(e.skills)}
       ${(e.roles || []).length ? `<div class="roles">${e.roles.map((r) => `<div class="role">
         <div class="role-line">
           <div class="role-title">${rich(r.title)}</div>
           <div class="role-dates">${rich(r.dates)}</div>
         </div>
         ${bullets(r.bullets)}
+        ${jobSkills(r.skills)}
       </div>`).join('')}</div>` : ''}
     </div>`).join('')}
   </div>`;
@@ -267,6 +275,11 @@ function renderHTML(cv) {
     <div class="job-title">${esc(cv.title)}</div>
   </div>
 
+  ${bgParagraphs.length ? `<div class="background">
+    <div class="section-label">Background</div>
+    ${bgParagraphs.map((p) => `<p>${rich(p)}</p>`).join('')}
+  </div>` : ''}
+
   <div class="cols">
     <aside>
       ${renderSkills(cv.skills)}
@@ -276,11 +289,6 @@ function renderHTML(cv) {
   </div>
 
   ${renderProjectsBand(cv)}
-
-  ${bgParagraphs.length ? `<div class="band background">
-    <div class="section-label">Background</div>
-    ${bgParagraphs.map((p) => `<p>${rich(p)}</p>`).join('')}
-  </div>` : ''}
 
 </div>
 </body>
