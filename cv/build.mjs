@@ -65,8 +65,8 @@ html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
 
 body {
   font-family: "Segoe UI", "Inter", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
-  font-size: 8.4pt;
-  line-height: 1.4;
+  font-size: 8.2pt;
+  line-height: 1.32;
   color: var(--text);
   background: #fff;
 }
@@ -106,7 +106,7 @@ body {
 
 /* ── experience ── */
 .exp { break-inside: avoid; }
-.exp + .exp { margin-top: .78rem; padding-top: .78rem; border-top: 1px solid var(--rule); }
+.exp + .exp { margin-top: .6rem; padding-top: .6rem; border-top: 1px solid var(--rule); }
 .exp-line1 { display: flex; justify-content: space-between; align-items: baseline; gap: 1rem; }
 .exp-company { font-size: 9.8pt; font-weight: 700; }
 .exp-dates { font-size: 7.8pt; color: var(--muted); white-space: nowrap; }

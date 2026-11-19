@@ -62,9 +62,10 @@
           "title": "Lead AI Engineer",
           "dates": "Aug 2025 - present · 1 yr 3 mos",
           "bullets": [
-            "Developing B2B BI AI retrieval with RAG, CAG BigQuery and Graph Query.",
-            "Multi-agent reasoning harness with orchestration, decision trees, context management and context-grounded tools.",
-            "Safety evaluations and model hallucinations, alignment and performance optimization."
+            "Built end-to-end a BI AI retrieval system with RAG, CAG, Gemini, BigQuery, GQL, fine-tuning.",
+            "Large-scale financial data modeling over 1M+ rows: OBS hierarchies, grouping dimensions, BigQuery pipelines, semantic search over org structures.",
+            "Designed a multi-agent reasoning harness with orchestration, decision trees, routers, context tools.",
+            "Safety evaluations, hallucination detection, openevals & LangSmith, performance optimization."
           ],
           "skills": ["Python", "TypeScript", "SQL", "MCP", "BigQuery", "Orchestration", "Graph Query", "RAG", "Context AG"]
         },
@@ -73,8 +74,8 @@
           "dates": "Sep 2022 - present • South District, Israel",
           "bullets": [
             "Built SQL Server data ingestion pipelines using ODBC/OLE DB, for large-scale financial data.",
-            "Architected multi-threaded .NET backend engines and used dump analysis to resolve deadlocks and memory leaks.",
-            "Refactor and maintain legacy software, optimizing I/O performance, dependency injections, ERP and external API integrations."
+            "Architected multi-threaded .NET engines and used dump analysis to resolve deadlocks and memory leaks.",
+            "Developing large legacy software, optimizing I/O, ExcelComs, dependency injections, PowerPivot, API integrations."
           ],
           "skills": ["C#", "VB.NET", "PowerShell", "Multithreading", "ODBC / OLE DB", "SQL Server", "DuckDB", "ERP APIs"]
         }
@@ -85,9 +86,9 @@
       "dates": "Dec 2023 - Nov 2026 (3 yrs)",
       "meta": "Lead Software Engineer • Israeli Air Force • Mandatory military service",
       "bullets": [
-        "Built .ASP & FastAPI backends to analyze and model avionics blocks.",
-        "Developed ML change point detection systems using HMM and ruptures, and neural network regression.",
-        "Architected data-heavy React frontends, integrating WASM and Jupyter environments, configuring NGINX and Git pipelines."
+        "Built FastAPI / .ASP backends to interpret black boxes and model aircraft avionic blocks for ML analysis.",
+        "Data & load heavy Debriefing and Decoding system integrating WASM, DuckDB, Jupyter kernels and NGINX.",
+        "Developed ML change point detection, regression and anomaly detection across timescale data."
       ],
       "skills": ["Python", "C#", "JavaScript / TypeScript", "ASP.NET", "FastAPI", "React", "WASM", "OpenShift", "Jupyter"]
     },

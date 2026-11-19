@@ -3,8 +3,6 @@ name: Deploy
 on:
   push:
     branches: [main]
-  schedule:
-    - cron: '17 3 * * *' # daily refresh so GitHub stats stay current
   workflow_dispatch:
 
 permissions:
@@ -19,11 +17,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Build GitHub stats (token stays in CI)
-        run: node .github/scripts/build-stats.mjs
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUBKEY }}
 
       # Pages serves the gh-pages branch directly (branch-based mode);
       # publishing is just a force-push of mySite's contents.
